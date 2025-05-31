@@ -1,0 +1,9 @@
+version = 0.1
+[default.deploy.parameters]
+stack_name = "pokerpoint"
+resolve_s3 = true
+s3_prefix = "pokerpoint"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "HostedZoneId=\"Z1018402HNK7OX0T6E1K\""
+image_repositories = []

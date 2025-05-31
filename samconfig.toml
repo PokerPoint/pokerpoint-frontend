@@ -1,0 +1,10 @@
+version = 0.1
+[default.deploy.parameters]
+stack_name = "pokerpoint-frontend"
+resolve_s3 = true
+s3_prefix = "pokerpoint-frontend"
+region = "eu-west-2"
+profile = "pokerpoint"
+capabilities = "CAPABILITY_IAM CAPABILITY_NAMED_IAM"
+parameter_overrides = "WebsiteCertificateArn=\"arn:aws:acm:us-east-1:478918921066:certificate/862d3553-cfb8-41f8-94c9-80cc643afba8\""
+image_repositories = []
