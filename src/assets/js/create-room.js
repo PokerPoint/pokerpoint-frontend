@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://api.pokerpoint.co.uk';
+const API_BASE_URL = 'https://api.production.pokerpoint.co.uk';
 
 document.getElementById('create-room-button').addEventListener('click', async () => {
     const roomName = document.getElementById('create-room-name').value.trim();

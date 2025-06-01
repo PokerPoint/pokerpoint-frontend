@@ -1,4 +1,4 @@
-const WEB_SOCKET_URL = "wss://wss.pokerpoint.co.uk";
+const WEB_SOCKET_URL = "wss://wss.production.pokerpoint.co.uk";
 
 let socket = null;
 let currentRoomId = null;
