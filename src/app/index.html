@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokerPoint - Agile Estimation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="min-h-screen font-sans text-gray-200 flex items-center justify-center p-4 sm:p-6">
+<div class="w-full max-w-7xl flex flex-col space-y-6">
+    <header class="p-6 text-center animate-fadeInUp">
+        <img src="../assets/images/logo.svg" alt="PokerPoint Logo" class="mx-auto h-16 sm:h-20" />
+        <p class="mt-2 text-lg text-gray-400">Collaborative Poker Planning for Agile Teams</p>
+    </header>
+
+    <main class="flex-1 flex flex-col gap-6 sm:gap-8 p-6 overflow-auto">
+        <div id="setup-section" class="w-full max-w-lg mx-auto space-y-6">
+            <div class="glass-effect rounded-2xl p-6 sm:p-8">
+                <div class="flex justify-center mb-6">
+                    <button id="show-create-room" class="tab-button active px-6 py-3 rounded-l-lg text-lg font-medium">Create Room</button>
+                    <button id="show-join-room" class="tab-button px-6 py-3 rounded-r-lg text-lg font-medium">Join Room</button>
+                </div>
+
+                <section id="create-room-section" class="animate-fadeInUp">
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-center mb-6 text-indigo-300">Create a New Room</h2>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300">Room Name</label>
+                            <input
+                                    type="text"
+                                    id="create-room-name"
+                                    placeholder="e.g. Sprint Planning Session"
+                                    class="w-full mt-2 p-3 sm:p-4 bg-transparent rounded-lg text-white placeholder-gray-500 focus:ring-0 input-focus"
+                            />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300">Estimation Values (comma-separated)</label>
+                            <input
+                                    type="text"
+                                    id="create-cards"
+                                    placeholder="e.g. 0, 1, 2, 3, 5, 8, 13, 21"
+                                    class="w-full mt-2 p-3 sm:p-4 bg-transparent rounded-lg text-white placeholder-gray-500 focus:ring-0 input-focus"
+                            />
+                            <div class="mt-2 flex flex-wrap gap-2">
+                                <button type="button" class="bg-indigo-500 hover:bg-indigo-600 text-white text-sm px-3 py-1 rounded" onclick="setEstimationValues('0, 1, 2, 3, 5, 8, 13')">Fibonacci</button>
+                                <button type="button" class="bg-purple-500 hover:bg-purple-600 text-white text-sm px-3 py-1 rounded" onclick="setEstimationValues('XS, S, M, L, XL, XXL')">T-Shirt Sizes</button>
+                            </div>
+                        </div>
+                        <button
+                                id="create-room-button"
+                                class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-3 sm:p-4 rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 font-medium"
+                        >
+                            Create Room
+                        </button>
+                        <p id="create-room-response" class="text-center text-red-400 text-sm"></p>
+                        <div id="room-url-container" class="mt-4 hidden">
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Room Link</label>
+                            <div class="flex gap-2">
+                                <input
+                                        id="room-url"
+                                        type="text"
+                                        readonly
+                                        class="flex-1 p-3 bg-gray-900 rounded-lg text-indigo-300 placeholder-indigo-600 focus:ring-0"
+                                />
+                                <button
+                                        id="copy-room-url"
+                                        class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-4 py-2 rounded-lg transition"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="join-room-section" class="hidden animate-fadeInUp">
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-center mb-6 text-indigo-300">Join an Existing Room</h2>
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300">Room ID</label>
+                            <input
+                                    type="text"
+                                    id="join-room-id"
+                                    placeholder="Enter Room ID"
+                                    class="w-full mt-2 p-3 sm:p-4 bg-transparent rounded-lg text-white placeholder-gray-500 focus:ring-0 input-focus"
+                            />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300">Your Name</label>
+                            <input
+                                    type="text"
+                                    id="join-display-name"
+                                    placeholder="e.g. Alex"
+                                    class="w-full mt-2 p-3 sm:p-4 bg-transparent rounded-lg text-white placeholder-gray-500 focus:ring-0 input-focus"
+                            />
+                        </div>
+                        <button
+                                id="join-room-button"
+                                class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-3 sm:p-4 rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 font-medium"
+                        >
+                            Join Room
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+        <section
+                id="room-section"
+                class="hidden w-full max-w-7xl mx-auto glass-effect rounded-3xl p-6 sm:p-10 lg:p-12 animate-slideIn min-h-[85vh] flex flex-col bg-gradient-to-br from-gray-900/80 to-gray-800/80 shadow-xl backdrop-blur-md"
+        >
+            <!-- Header -->
+            <header class="flex justify-center items-center mb-10">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                    <span id="room-name" class="text-indigo-300"></span>
+                </h2>
+            </header>
+
+            <!-- Main container -->
+            <div class="flex flex-col lg:flex-row flex-grow gap-10 min-h-0">
+                <!-- Main Content -->
+                <main class="flex-1 min-w-0 flex flex-col gap-8">
+                    <!-- Set New Task -->
+                    <section class="bg-gray-800/50 rounded-2xl p-6 shadow-md" id="set-new-task">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-200 mb-5">Set New Task</h3>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input
+                                    type="text"
+                                    id="card-name"
+                                    placeholder="e.g. XXXX: Implement feature XYZ into ABC"
+                                    class="flex-1 px-5 py-3 bg-gray-900/70 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all duration-200"
+                                    style="height: 48px;"
+                            />
+                            <button
+                                    id="set-card-button"
+                                    class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 font-semibold shadow-md"
+                                    style="height: 48px;"
+                            >
+                                Set Task
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Current Card -->
+                    <section class="bg-gray-800/50 rounded-2xl p-6 shadow-md">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-200 mb-5">
+                            Current Task: <span id="current-card" class="text-indigo-300">None</span>
+                        </h3>
+                    </section>
+
+                    <!-- Cast Your Estimate -->
+                    <section class="bg-800/50 rounded-2xl p-6 shadow-md relative" id="cast-estimates-panel">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-200 mb-5">Cast Your Estimate</h3>
+
+                        <div id="cards-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+
+                        <!-- Voting Closed Overlay -->
+                        <div id="voting-closed-message" class="absolute inset-0 bg-gray-900/80 flex items-center justify-center text-lg font-semibold text-indigo-300 hidden rounded-2xl">
+                            Voting Closed
+                        </div>
+                    </section>
+
+                    <!-- Reveal Button -->
+                    <button
+                            id="show-votes-button"
+                            class="w-full bg-gradient-to-r from-green-500 to-teal-600 text-white py-4 rounded-lg hover:from-green-600 hover:to-teal-700 transition-all duration-300 font-semibold text-lg shadow-md"
+                    >
+                        Reveal Estimates
+                    </button>
+
+                    <!-- Room URL -->
+                    <div id="room-url-container-vote" class="mt-8 hidden max-w-lg mx-auto">
+                        <label class="block text-sm font-medium text-gray-300 mb-3">Room Link</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input
+                                    id="room-url-vote"
+                                    type="text"
+                                    readonly
+                                    class="flex-1 p-4 bg-gray-900/70 rounded-lg text-indigo-200 placeholder-gray-500 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all duration-200"
+                            />
+                            <button
+                                    id="copy-room-url-vote"
+                                    class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg transition-all duration-300 font-semibold shadow-md"
+                            >
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Jira -->
+                    <section id="jira-integration-section" class="mt-6"></section>
+
+                </main>
+
+                <!-- Participants Panel -->
+                <aside
+                        class="lg:w-80 shrink-0 bg-gray-800/50 rounded-2xl p-6 shadow-md max-h-[calc(100vh-10rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-500 scrollbar-track-gray-900/50"
+                >
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-200 mb-5">Team Members</h3>
+                    <ul id="participants-list" class="space-y-4 text-gray-300"></ul>
+                </aside>
+            </div>
+
+            <!-- Pie Chart Modal -->
+            <div id="vote-chart-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
+                <div class="bg-gray-900/90 rounded-2xl p-6 max-w-2xl w-full mx-4 shadow-xl backdrop-blur-md space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-semibold text-teal-100">Vote Distribution</h3>
+                        <button id="close-chart-modal" class="text-teal-200 hover:text-teal-300 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <canvas id="vote-pie-chart" class="w-full h-72"></canvas>
+
+                    <!-- Names List Section -->
+                    <div id="vote-breakdown" class="space-y-4 max-h-60 overflow-y-auto pr-2">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+    <footer class="p-6 text-center text-gray-500 text-sm">
+        © 2025 PokerPoint.
+    </footer>
+
+    <div id="loading-spinner" class="fixed inset-0 bg-black/60 flex flex-col items-center justify-center z-50 hidden">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-indigo-500 border-opacity-75 mb-4"></div>
+        <p class="text-white text-lg font-semibold">Loading...</p>
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+<script src="../assets/js/toggle-sections.js"></script>
+<script src="../assets/js/create-room.js"></script>
+<script src="../assets/js/ws-requests.js"></script>
+<script src="../assets/js/index.js"></script>
+<script src="../assets/js/jira.js"></script>
+
+</body>
+</html>

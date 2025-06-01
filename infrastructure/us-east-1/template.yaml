@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: PokerPoint
+Transform: [AWS::LanguageExtensions, AWS::Serverless-2016-10-31]
+
+Parameters:
+  HostedZoneId:
+    Type: String
+
+Resources:
+  DomainCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: pokerpoint.co.uk
+      DomainValidationOptions:
+        - DomainName: pokerpoint.co.uk
+          HostedZoneId: !Ref HostedZoneId
+      ValidationMethod: DNS
+
+Outputs:
+  DomainCertificateArn:
+    Description: "ARN of the ACM certificate for pokerpoint.co.uk"
+    Value: !Ref DomainCertificate
+    Export:
+      Name: !Sub ${AWS::StackName}-CertificateArn

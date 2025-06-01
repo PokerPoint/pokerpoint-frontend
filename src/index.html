@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokerPoint - Agile Estimation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white font-sans">
+
+<!-- Animated Hero Header -->
+<header class="min-h-screen relative flex flex-col items-center justify-center text-center px-6 py-12 overflow-hidden">
+    <!-- Background Animation -->
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800 animate-gradient-x"></div>
+
+    <!-- Floating Particles Canvas -->
+    <canvas id="particles" class="absolute inset-0 z-0"></canvas>
+
+    <!-- Content -->
+    <div class="relative z-10 animate-fadeInUp">
+        <img src="assets/images/logo.svg" alt="PokerPoint Logo" class="h-24 sm:h-28 mb-8" />
+
+        <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8 animate-fadeIn">
+            Free, fast, and collaborative agile estimation—no limits, no sign-up required.
+        </p>
+
+        <a href="app/index.html" class="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold text-lg rounded-lg transition animate-fadeInUp">
+            Start Estimating
+        </a>
+    </div>
+</header>
+
+
+<!-- Features Section -->
+<section class="max-w-6xl mx-auto px-6 pt-12 pb-20 animate-slideUpFade">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-center text-indigo-300 mb-12">Why Teams Love PokerPoint</h2>
+    <div class="grid sm:grid-cols-3 gap-8 text-center text-gray-300">
+        <div class="p-6 glass-effect rounded-xl">
+            <div class="text-indigo-400 text-4xl mb-3">🔓</div>
+            <h3 class="text-xl font-semibold text-white mb-2">Unlimited Rooms</h3>
+            <p>Create as many rooms as your team needs. No restrictions or sign-ins.</p>
+        </div>
+        <div class="p-6 glass-effect rounded-xl">
+            <div class="text-purple-400 text-4xl mb-3">👥</div>
+            <h3 class="text-xl font-semibold text-white mb-2">Unlimited Participants</h3>
+            <p>Invite anyone to join. Works flawlessly with small or large teams.</p>
+        </div>
+        <div class="p-6 glass-effect rounded-xl">
+            <div class="text-green-400 text-4xl mb-3">💸</div>
+            <h3 class="text-xl font-semibold text-white mb-2">Free Forever</h3>
+            <p>No hidden costs. Open and accessible for every agile team out there.</p>
+        </div>
+    </div>
+</section>
+
+<!-- How it Works -->
+<section class="bg-black bg-opacity-20 py-20 px-6 text-center">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-indigo-300 mb-12">How It Works</h2>
+    <div class="max-w-4xl mx-auto space-y-10 text-left text-gray-300">
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+            <div class="text-3xl text-indigo-400">1️⃣</div>
+            <div>
+                <h3 class="text-xl text-white font-medium mb-1">Create a Room</h3>
+                <p>Set up a new room with your estimation values like Fibonacci or T-Shirt sizes.</p>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+            <div class="text-3xl text-purple-400">2️⃣</div>
+            <div>
+                <h3 class="text-xl text-white font-medium mb-1">Share the Link</h3>
+                <p>Send your unique room link to team members. No login required.</p>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+            <div class="text-3xl text-green-400">3️⃣</div>
+            <div>
+                <h3 class="text-xl text-white font-medium mb-1">Start Estimating</h3>
+                <p>Vote, discuss, reveal results—all in real time. Perfect for sprint planning sessions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20 px-6 text-center">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-indigo-300 mb-6">Ready to Plan Smarter?</h2>
+    <p class="text-gray-400 mb-6 max-w-xl mx-auto">
+        No setup required. Get started in seconds.
+    </p>
+    <a href="app/index.html" class="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold text-lg rounded-lg transition">
+        Create Your First Room
+    </a>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black bg-opacity-30 py-8 text-center text-sm text-gray-500">
+    <p>&copy; 2025 PokerPoint</p>
+</footer>
+
+<script>
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray = [];
+
+    for (let i = 0; i < 80; i++) {
+        particlesArray.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2 + 1,
+            dx: (Math.random() - 0.5) * 0.5,
+            dy: (Math.random() - 0.5) * 0.5
+        });
+    }
+
+    function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(255,255,255,0.07)';
+        for (let p of particlesArray) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fill();
+            p.x += p.dx;
+            p.y += p.dy;
+
+            if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        }
+        requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+</script>
+
+</body>
+</html>
