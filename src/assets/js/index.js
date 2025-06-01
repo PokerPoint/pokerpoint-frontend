@@ -534,7 +534,7 @@ function showJira(roomId) {
 
 function startJiraAuth(roomId) {
     const clientId = 'HDIuLGOg69GDy95TMXopOPGXJAdN0sdf';
-    const redirectUri = encodeURIComponent('https://api.pokerpoint.co.uk/jira/callback');
+    const redirectUri = encodeURIComponent('https://api.production.pokerpoint.co.uk/jira/callback');
     const scope = encodeURIComponent('read:jira-work');
     const state = encodeURIComponent(getOrCreateUUID() + ":" + roomId);
     window.location.href = `https://auth.atlassian.com/authorize?audience=api.atlassian.com&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&state=${state}&response_type=code&prompt=consent`;
