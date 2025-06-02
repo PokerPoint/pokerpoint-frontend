@@ -217,33 +217,31 @@
                     <ul id="participants-list" class="space-y-4 text-gray-300"></ul>
                 </aside>
             </div>
-
-            <!-- Pie Chart Modal -->
-            <div id="vote-chart-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
-                <div class="bg-gray-900/90 rounded-2xl p-6 max-w-2xl w-full mx-4 shadow-xl backdrop-blur-md space-y-6">
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-2xl font-semibold text-teal-100">Vote Distribution</h3>
-                        <button id="close-chart-modal" class="text-teal-200 hover:text-teal-300 transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <canvas id="vote-pie-chart" class="w-full h-72"></canvas>
-
-                    <!-- Names List Section -->
-                    <div id="vote-breakdown" class="max-h-60 overflow-y-auto pr-2 pt-0">
-                    <!-- Filled by JS -->
-                    </div>
-                </div>
-            </div>
-
         </section>
 
-
-
     </main>
+
+    <!-- Pie Chart Modal -->
+    <div id="vote-chart-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
+        <div class="bg-gray-900/90 rounded-2xl p-6 max-w-2xl w-full mx-4 shadow-xl backdrop-blur-md space-y-6">
+            <div class="flex justify-between items-center">
+                <h3 class="text-2xl font-semibold text-teal-100">Vote Distribution</h3>
+                <button id="close-chart-modal" class="text-teal-200 hover:text-teal-300 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <canvas id="vote-pie-chart" class="w-full h-72"></canvas>
+
+            <!-- Names List Section -->
+            <div id="vote-breakdown" class="max-h-60 overflow-y-auto pr-2 pt-0">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+    </div>
+
 
     <footer class="p-6 text-center text-gray-500 text-sm">
         © 2025 PokerPoint.
