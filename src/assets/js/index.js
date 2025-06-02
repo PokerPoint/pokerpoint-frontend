@@ -268,10 +268,21 @@ function autoJoinRoom(ignore=false) {
                     const groupDiv = document.createElement('div');
 
                     groupDiv.innerHTML = `
-<h4 class="text-lg font-semibold text-teal-200 mb-1">${vote}</h4>
-<ul class="list-disc list-inside text-cyan-100 space-y-1 text-sm">
-    ${userIds.map(userId => `<li>${userMap[userId]}</li>`).join('')}
-</ul>`;
+    <div class="bg-gray-800/80 rounded-lg p-3 mb-3 border border-teal-500 shadow-sm">
+        <div class="flex justify-between items-center mb-2">
+            <h4 class="text-base font-bold text-teal-200">${vote}</h4>
+            <span class="text-sm text-teal-300">${userIds.length} vote${userIds.length !== 1 ? 's' : ''}</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+            ${userIds.map(userId => `
+                <span class="bg-teal-700/40 text-cyan-100 px-2 py-1 rounded-md text-xs font-medium">
+                    ${userMap[userId]}
+                </span>
+            `).join('')}
+        </div>
+    </div>
+`;
+
                     breakdownContainer.appendChild(groupDiv);
                 });
 
