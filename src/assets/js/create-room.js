@@ -46,7 +46,10 @@ document.getElementById('create-room-button').addEventListener('click', async ()
             }, 2000);
         };
 
-        autoJoinRoom(true)
+        const savedName = localStorage.getItem('pokerPointDisplayName');
+        if(savedName) {
+            autoJoinRoom(true)
+        }
 
     } catch (err) {
         alert('Request failed: ' + err.message);
