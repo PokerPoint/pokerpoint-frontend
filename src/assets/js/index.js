@@ -18,11 +18,11 @@ const participantsList = document.getElementById('participants-list');
 const cardsContainer = document.getElementById('cards-container');
 
 
-joinRoomButton.addEventListener('click', () => {
-    autoJoinRoom()
+joinRoomButton.addEventListener('click', async () => {
+    await autoJoinRoom()
 });
 
-function autoJoinRoom(ignore=false) {
+async function autoJoinRoom(ignore=false) {
     const roomId = document.getElementById('join-room-id').value.trim();
     const displayName = document.getElementById('join-display-name').value.trim();
 
@@ -31,6 +31,11 @@ function autoJoinRoom(ignore=false) {
             alert('Please enter both room ID and display name.');
             return;
         }
+    }
+
+    if(!await roomExists(roomId)) {
+        alert('That room does not exist');
+        return;
     }
 
     showSpinner()
@@ -395,7 +400,7 @@ document.getElementById('show-votes-button').addEventListener('click', () => {
     show(socket, currentRoomId);
 });
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
     const params = new URLSearchParams(window.location.search);
     const roomId = params.get('roomId');
     const jira = params.get('jira');
@@ -408,7 +413,7 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('join-room-id').value = roomId;
     }
 
-    if(jira) {
+    if (jira) {
         localStorage.setItem('jiraLinked', jira);
     } else {
         localStorage.removeItem("jiraLinked")
@@ -419,8 +424,8 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('join-display-name').value = savedName;
     }
 
-    if(roomId && savedName) {
-        autoJoinRoom()
+    if (roomId && savedName) {
+        await autoJoinRoom()
     }
 });
 
@@ -556,4 +561,15 @@ function startJiraAuth(roomId) {
     const scope = encodeURIComponent('read:jira-work');
     const state = encodeURIComponent(getOrCreateUUID() + ":" + roomId);
     window.location.href = `https://auth.atlassian.com/authorize?audience=api.atlassian.com&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&state=${state}&response_type=code&prompt=consent`;
+}
+
+async function roomExists(roomId) {
+    const response = await fetch(`${API_BASE_URL}/check?roomId=${roomId}`, {
+        method: 'GET'
+    });
+    if(response.ok) {
+        const body = await response.json();
+        return body.valid;
+    }
+    return false;
 }

@@ -48,7 +48,7 @@ document.getElementById('create-room-button').addEventListener('click', async ()
 
         const savedName = localStorage.getItem('pokerPointDisplayName');
         if(savedName) {
-            autoJoinRoom(true)
+            await autoJoinRoom(true)
         }
 
     } catch (err) {
