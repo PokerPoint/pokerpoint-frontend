@@ -349,17 +349,21 @@ function leaveRoom() {
     cardsContainer.innerHTML = '';
     roomNameDisplay.textContent = '';
     currentCardDisplay.textContent = 'N/A';
-    roomSection.classList.add('hidden');
+
     createRoomSection.classList.remove('hidden');
-    joinRoomSection.classList.add('hidden');
+    joinRoomSection.classList.remove('hidden');
+    roomSection.classList.add('hidden');
 
     document.getElementById('show-create-room').classList.add('active');
     document.getElementById('show-join-room').classList.remove('active');
     document.getElementById('create-room-name').value = '';
     document.getElementById('create-cards').value = '';
     document.getElementById('create-room-response').textContent = '';
-    document.getElementById('join-room-id').value = '';
-    document.getElementById('join-display-name').value = '';
+
+
+    const redirect = `${window.location.origin}/app/index.html`;
+    window.location.replace(redirect);
+
 }
 
 function renderCardButtons() {

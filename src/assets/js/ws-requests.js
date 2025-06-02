@@ -2,7 +2,8 @@ function joinRoom(socket, roomId, displayName) {
     sendMessage(socket, {
         action: "join",
         roomId: roomId,
-        displayName: displayName
+        displayName: displayName,
+        userId: getOrCreateUUID(),
     });
 }
 
@@ -28,7 +29,8 @@ function vote(socket, roomId, vote) {
     sendMessage(socket, {
         action: "vote",
         roomId: roomId,
-        vote: vote
+        vote: vote,
+        userId: getOrCreateUUID(),
     });
 }
 
