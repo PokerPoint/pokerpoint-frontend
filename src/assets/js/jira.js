@@ -24,7 +24,7 @@ function renderJiraTickets(result) {
         div.innerHTML = `
       <span>${issue.key}: ${issue.summary}</span>
       <button class="bg-indigo-500 text-white px-3 py-1 rounded" onclick="setJiraCard('${issue.key}: ${issue.summary.replace(/'/g, "\\'")}', '${issue.key}')">
-        Set Task
+        Start Voting
       </button>
     `;
 
@@ -67,7 +67,7 @@ document.getElementById('add-manual-tickets').addEventListener('click', () => {
         div.innerHTML = `
             <span>${line}</span>
             <button class="bg-indigo-500 text-white px-3 py-1 rounded" onclick="setManualCard('${line.replace(/'/g, "\\'")}', '${id}')">
-                Set Task
+                Start Voting
             </button>
         `;
 
@@ -90,4 +90,3 @@ function setManualCard(summary, key) {
         ticketDiv.remove();
     }
 }
-
