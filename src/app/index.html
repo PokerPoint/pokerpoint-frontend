@@ -119,25 +119,25 @@
                 <!-- Main Content -->
                 <main class="flex-1 min-w-0 flex flex-col gap-8">
                     <!-- Set New Task -->
-                    <section class="bg-gray-800/50 rounded-2xl p-6 shadow-md" id="set-new-task">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-200 mb-5">Set New Task</h3>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <input
-                                    type="text"
-                                    id="card-name"
-                                    placeholder="e.g. XXXX: Implement feature XYZ into ABC"
-                                    class="flex-1 px-5 py-3 bg-gray-900/70 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all duration-200"
-                                    style="height: 48px;"
-                            />
-                            <button
-                                    id="set-card-button"
-                                    class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 font-semibold shadow-md"
-                                    style="height: 48px;"
-                            >
-                                Set Task
-                            </button>
-                        </div>
-                    </section>
+<!--                    <section class="bg-gray-800/50 rounded-2xl p-6 shadow-md" id="set-new-task">-->
+<!--                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-200 mb-5">Set New Task</h3>-->
+<!--                        <div class="flex flex-col sm:flex-row gap-4">-->
+<!--                            <input-->
+<!--                                    type="text"-->
+<!--                                    id="card-name"-->
+<!--                                    placeholder="e.g. XXXX: Implement feature XYZ into ABC"-->
+<!--                                    class="flex-1 px-5 py-3 bg-gray-900/70 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all duration-200"-->
+<!--                                    style="height: 48px;"-->
+<!--                            />-->
+<!--                            <button-->
+<!--                                    id="set-card-button"-->
+<!--                                    class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 font-semibold shadow-md"-->
+<!--                                    style="height: 48px;"-->
+<!--                            >-->
+<!--                                Set Task-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </section>-->
 
                     <!-- Current Card -->
                     <section class="bg-gray-800/50 rounded-2xl p-6 shadow-md">
@@ -184,6 +184,25 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- Manual Ticket Entry -->
+                    <section class="bg-gray-800/50 rounded-2xl p-6 shadow-md mt-6" id="manual-ticket-entry">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-200 mb-4">Add Tickets Manually</h3>
+                        <textarea
+                                id="manual-tickets-input"
+                                rows="6"
+                                placeholder="Paste one ticket per line, e.g.:\nABC-123: Fix login bug\nDEF-456: Add new endpoint"
+                                class="w-full p-4 bg-gray-900/70 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-400 focus:outline-none transition-all duration-200 resize-none"
+                        ></textarea>
+                        <button
+                                id="add-manual-tickets"
+                                class="mt-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 font-semibold shadow-md"
+                        >
+                            Add Tickets
+                        </button>
+                        <div id="manual-tickets-list" class="mt-4 space-y-2"></div>
+                    </section>
+
 
                     <!-- Jira -->
                     <section id="jira-integration-section" class="mt-6"></section>

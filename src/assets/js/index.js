@@ -58,6 +58,7 @@ function autoJoinRoom(ignore=false) {
         const votingClosedMessage = document.getElementById('voting-closed-message');
         const revealVotesButton = document.getElementById('show-votes-button');
         const jiraQuerySearch = document.getElementById('jira-query-section');
+        const manualTicketEntry = document.getElementById('manual-ticket-entry');
         const jiraLinked = localStorage.getItem('jiraLinked');
 
         console.log("Received event:", event, data);
@@ -78,12 +79,14 @@ function autoJoinRoom(ignore=false) {
                 const revealVotes = document.getElementById('show-votes-button');
 
                 if(ownerUUID === userUUID) {
-                    setNewTask.classList.remove('hidden');
+                 //   setNewTask.classList.remove('hidden');
                     revealVotes.classList.remove('hidden');
+                    manualTicketEntry.classList.remove('hidden');
                     showJira(roomId);
                 } else {
-                    setNewTask.classList.add('hidden');
+                    //setNewTask.classList.add('hidden');
                     revealVotes.classList.add('hidden');
+                    manualTicketEntry.classList.add('hidden');
                 }
 
                 data.participants.forEach(p => {
@@ -363,14 +366,14 @@ function renderCardButtons() {
     });
 }
 
-document.getElementById('set-card-button').addEventListener('click', () => {
-    const cardName = document.getElementById('card-name').value.trim();
-    if (!cardName) {
-        alert("Please enter a card name.");
-        return;
-    }
-    setCard(socket, currentRoomId, cardName);
-});
+// document.getElementById('set-card-button').addEventListener('click', () => {
+//     const cardName = document.getElementById('card-name').value.trim();
+//     if (!cardName) {
+//         alert("Please enter a card name.");
+//         return;
+//     }
+//     setCard(socket, currentRoomId, cardName);
+// });
 
 document.getElementById('show-votes-button').addEventListener('click', () => {
     showSpinner()
