@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PokerPoint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .robot {
+            position: absolute;
+            left: 82rem;
+            top: 26rem;
+            height: 57rem;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body class="top-gradient">
+<div class="container">
+    <section class="nav">
+        <ul>
+            <li><a href="#">Why Teams Love PokerPoint</a></li>
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Open Collective</a></li>
+            <li><a href="#">GitHub</a></li>
+        </ul>
+        <span class="logo"><img src="logo.png" alt="PokerPoint Logo"></span>
+
+
+        <br><br><br>
+        <br><br><br>
+
+        <h1>Agile Planning Just Got Easier With PokerPoint</h1>
+        <div class="text-image">
+            <p>PokerPoint is an agile planning tool that helps software teams estimate story points, prioritize their backlog, and stay aligned. Its intuitive interface and seamless workflow integration improve collaboration, estimates, and transparency — enabling smarter decisions and faster value delivery.</p>
+        </div>
+        <button>Start Pointing</button>
+
+        <img class="robot" src="robot.png">
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2>Why Teams Love PokerPoint?</h2>
+
+        <div class="box-container">
+            <div class="box">
+                <div class="img">🔓</div>
+                <div class="title">Unlimited Rooms</div>
+                <div class="text">Create as many rooms as your team needs. No restrictions or sign-ins.</div>
+            </div>
+
+
+            <div class="box">
+                <div class="img">👥</div>
+                <div class="title">Unlimited Participants</div>
+                <div class="text">Invite anyone to join. Works flawlessly with small or large teams.</div>
+            </div>
+
+            <div class="box">
+                <div class="img">💸</div>
+                <div class="title">Free Forever</div>
+                <div class="text">No hidden costs. Open and accessible for every agile team out there.</div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+
+        <div class="how-it-works-container">
+            <div class="how-it-works-text">
+                <div class="heading">1. Create a Room</div>
+                <p>Creating a room is easy, simply enter a “Room Name” and the choose the deck you wish to use (or enter your own estimation values).</p>
+
+                <div class="heading">2. Share the Link</div>
+                <p>Send your unique room link to team members. No login required.</p>
+
+                <div class="heading">3. Start Estimating</div>
+                <p>Vote, discuss, reveal results—all in real time. Perfect for sprint planning and refinement sessions.</p>
+
+                <div class="heading">4: Optionally, link Jira</div>
+                <p>You can opt to link Jira to your board, provide a JQL and see all the tickets to be pointed straight on the board.</p>
+            </div>
+
+            <div class="how-it-works-images">
+<!--                <img src="image 18.png" alt="Robot">-->
+<!--                <img src="image 18.png" alt="Robot">-->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="features">
+        <h2>Features</h2>
+
+        <div class="features-grid">
+            <div class="features-container">
+                <h3>Integration with Jira</h3>
+                <p>Directly fetch the tickets you have ready for refinement by linking to Jira and providing your JQL.</p>
+            </div>
+
+            <div class="features-container">
+                <h3>Free - No Pay Wall</h3>
+                <p>PokerPoint is free and Open-Source.</p>
+            </div>
+
+            <div class="features-container">
+                <h3>Unlimited Rooms</h3>
+                <p>Host as many poker sessions as you like. There is no cap on the amount of rooms you can host and join.</p>
+            </div>
+
+            <div class="features-container">
+                <h3>Unlimited Participants</h3>
+                <p>Invite your whole team and organisation with unlimited participants and no limits.</p>
+            </div>
+
+            <div class="features-container">
+                <h3>Real Time Voting</h3>
+                <p>Receive instant feedback when users vote.</p>
+            </div>
+
+            <div class="features-container">
+                <h3>Unlimited Rooms</h3>
+                <p>Host as many poker sessions as you like. There is no cap on the amount of rooms you can host and join.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="main">
+        <center>
+            <h2>Support us on OpenCollective</h2>
+            <button>Open Collective</button>
+        </center>
+    </section>
+
+</div>
+
+<script>
+    (() => {
+        const sections = document.querySelectorAll('section');
+        let isScrolling = false;
+        let currentSection = 0;
+
+        // Helper: scroll to a section index
+        function scrollToSection(index) {
+            if (index < 0 || index >= sections.length) return;
+            isScrolling = true;
+            currentSection = index;
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+            // Wait for scrolling to finish (~500ms)
+            setTimeout(() => { isScrolling = false; }, 600);
+        }
+
+        window.addEventListener('wheel', (e) => {
+            if (isScrolling) {
+                e.preventDefault();
+                return;
+            }
+
+            if (e.deltaY > 0) {
+                // Scrolling down
+                if (currentSection < sections.length - 1) {
+                    e.preventDefault();
+                    scrollToSection(currentSection + 1);
+                }
+            } else if (e.deltaY < 0) {
+                // Scrolling up
+                if (currentSection > 0) {
+                    e.preventDefault();
+                    scrollToSection(currentSection - 1);
+                }
+            }
+        }, { passive: false });
+    })();
+
+</script>
+</body>
+</html>
