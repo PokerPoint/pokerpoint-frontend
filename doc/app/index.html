@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PokerPoint - Agile estimation and planning tool for teams">
+    <meta name="keywords" content="agile, estimation, planning, poker, scrum">
+    <meta name="author" content="PokerPoint">
+    <title>PokerPoint - Agile Estimation</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen font-sans flex items-center justify-center p-4 sm:p-6" style="background-color: var(--main-bg); color: white;">
+<div class="w-full max-w-7xl flex flex-col space-y-6">
+    <main class="flex-1 flex flex-col gap-6 sm:gap-8 p-6 overflow-auto" role="main">
+        <section id="setup-section" class="w-full max-w-lg mx-auto space-y-6" data-section="setup">
+            <div class="rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-xl" style="background-color: rgba(39, 37, 38, 0.5);">
+                <nav class="flex justify-center mb-6" role="tablist">
+                    <button
+                            id="show-create-room"
+                            class="tab-button active px-6 py-3 rounded-l-lg text-lg font-medium transition-colors"
+                            style="background-color: rgba(91, 62, 188, 0.2); color: white;"
+                            onmouseover="this.style.backgroundColor='rgba(91, 62, 188, 0.3)'"
+                            onmouseout="this.style.backgroundColor='rgba(91, 62, 188, 0.2)'"
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="create-room-section"
+                    >
+                        Create Room
+                    </button>
+                    <button
+                            id="show-join-room"
+                            class="tab-button px-6 py-3 rounded-r-lg text-lg font-medium transition-colors"
+                            style="background-color: rgba(55, 65, 81, 0.2); color: white;"
+                            onmouseover="this.style.backgroundColor='rgba(55, 65, 81, 0.3)'"
+                            onmouseout="this.style.backgroundColor='rgba(55, 65, 81, 0.2)'"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="join-room-section"
+                    >
+                        Join Room
+                    </button>
+                </nav>
+
+                <section
+                        id="create-room-section"
+                        class="animate-fadeInUp"
+                        role="tabpanel"
+                        aria-labelledby="show-create-room"
+                >
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-center mb-6" style="color: var(--primary);">
+                        Create a New Room
+                    </h2>
+                    <form class="space-y-5" data-form="create-room">
+                        <div>
+                            <label for="create-room-name" class="block text-sm font-medium" style="color: #D1D5DB;">
+                                Room Name
+                            </label>
+                            <input
+                                    type="text"
+                                    id="create-room-name"
+                                    placeholder="e.g. Sprint Planning Session"
+                                    class="w-full mt-2 p-3 sm:p-4 rounded-lg text-white placeholder-gray-500 focus:outline-none transition-all duration-200"
+                                    style="background-color: rgba(17, 24, 39, 0.7); border: 2px solid transparent;"
+                                    onfocus="this.style.borderColor='var(--primary)'"
+                                    onblur="this.style.borderColor='transparent'"
+                                    required
+                                    aria-required="true"
+                            />
+                        </div>
+                        <div>
+                            <label for="create-cards" class="block text-sm font-medium" style="color: #D1D5DB;">
+                                Estimation Values (comma-separated)
+                            </label>
+                            <input
+                                    type="text"
+                                    id="create-cards"
+                                    value="0, 1, 2, 3, 5, 8, 13"
+                                    class="w-full mt-2 p-3 sm:p-4 rounded-lg text-white placeholder-gray-500 focus:outline-none transition-all duration-200"
+                                    style="background-color: rgba(17, 24, 39, 0.7); border: 2px solid transparent;"
+                                    onfocus="this.style.borderColor='var(--primary)'"
+                                    onblur="this.style.borderColor='transparent'"
+                                    required
+                                    aria-required="true"
+                            />
+                            <div class="mt-2 flex flex-wrap gap-2">
+                                <button
+                                        type="button"
+                                        class="text-sm px-3 py-1 rounded transition-colors"
+                                        style="background: var(--primary); color: white;"
+                                        onmouseover="this.style.background='var(--secondary)'"
+                                        onmouseout="this.style.background='var(--primary)'"
+                                        onclick="uiManager.setEstimationValues('0, 1, 2, 3, 5, 8, 13')"
+                                >
+                                    Fibonacci
+                                </button>
+                                <button
+                                        type="button"
+                                        class="text-sm px-3 py-1 rounded transition-colors"
+                                        style="background: var(--secondary); color: white;"
+                                        onmouseover="this.style.background='var(--primary)'"
+                                        onmouseout="this.style.background='var(--secondary)'"
+                                        onclick="uiManager.setEstimationValues('XS, S, M, L, XL, XXL')"
+                                >
+                                    T-Shirt Sizes
+                                </button>
+                            </div>
+                        </div>
+                        <button
+                                id="create-room-button"
+                                type="button"
+                                class="w-full p-3 sm:p-4 rounded-lg font-medium transition-all duration-300"
+                                style="background: var(--gradient); color: white;"
+                                onmouseover="this.style.background='linear-gradient(to right, var(--secondary), var(--primary))'"
+                                onmouseout="this.style.background='var(--gradient)'"
+                        >
+                            Create Room
+                        </button>
+                        <p id="create-room-response" class="text-center text-sm" style="color: #F87171;" aria-live="polite"></p>
+                        <div id="room-url-container" class="mt-4 hidden">
+                            <label for="room-url" class="block text-sm font-medium mb-2" style="color: #D1D5DB;">
+                                Room Link
+                            </label>
+                            <div class="flex gap-2">
+                                <input
+                                        id="room-url"
+                                        type="text"
+                                        readonly
+                                        class="flex-1 p-3 rounded-lg focus:outline-none"
+                                        style="background-color: #111827; color: var(--primary);"
+                                        aria-readonly="true"
+                                />
+                                <button
+                                        id="copy-room-url"
+                                        type="button"
+                                        class="px-4 py-2 rounded-lg transition-colors"
+                                        style="background: var(--gradient); color: white;"
+                                        onmouseover="this.style.background='linear-gradient(to right, var(--secondary), var(--primary))'"
+                                        onmouseout="this.style.background='var(--gradient)'"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <section
+                        id="join-room-section"
+                        class="hidden animate-fadeInUp"
+                        role="tabpanel"
+                        aria-labelledby="show-join-room"
+                >
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-center mb-6" style="color: var(--primary);">
+                        Join an Existing Room
+                    </h2>
+                    <form class="space-y-5" data-form="join-room">
+                        <div>
+                            <label for="join-room-id" class="block text-sm font-medium" style="color: #D1D5DB;">
+                                Room ID
+                            </label>
+                            <input
+                                    type="text"
+                                    id="join-room-id"
+                                    placeholder="Enter Room ID"
+                                    class="w-full mt-2 p-3 sm:p-4 rounded-lg text-white placeholder-gray-500 focus:outline-none transition-all duration-200"
+                                    style="background-color: rgba(17, 24, 39, 0.7); border: 2px solid transparent;"
+                                    onfocus="this.style.borderColor='var(--primary)'"
+                                    onblur="this.style.borderColor='transparent'"
+                                    required
+                                    aria-required="true"
+                            />
+                        </div>
+                        <div>
+                            <label for="join-display-name" class="block text-sm font-medium" style="color: #D1D5DB;">
+                                Your Name
+                            </label>
+                            <input
+                                    type="text"
+                                    id="join-display-name"
+                                    placeholder="e.g. Alex"
+                                    class="w-full mt-2 p-3 sm:p-4 rounded-lg text-white placeholder-gray-500 focus:outline-none transition-all duration-200"
+                                    style="background-color: rgba(17, 24, 39, 0.7); border: 2px solid transparent;"
+                                    onfocus="this.style.borderColor='var(--primary)'"
+                                    onblur="this.style.borderColor='transparent'"
+                                    required
+                                    aria-required="true"
+                            />
+                        </div>
+                        <button
+                                id="join-room-button"
+                                type="button"
+                                class="w-full p-3 sm:p-4 rounded-lg font-medium transition-all duration-300"
+                                style="background: var(--gradient); color: white;"
+                                onmouseover="this.style.background='linear-gradient(to right, var(--secondary), var(--primary))'"
+                                onmouseout="this.style.background='var(--gradient)'"
+                        >
+                            Join Room
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </section>
+
+        <section
+                id="room-section"
+                class="hidden w-full max-w-7xl mx-auto rounded-3xl p-6 sm:p-10 lg:p-12 animate-slideIn min-h-[85vh] flex flex-col shadow-xl backdrop-blur-md"
+                style="background-color: rgba(39, 37, 38, 0.5);"
+                data-section="room"
+        >
+            <header class="flex justify-center items-center mb-10">
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
+                    <span id="room-name" style="color: var(--secondary);" aria-live="polite"></span>
+                </h2>
+            </header>
+
+            <div class="flex flex-col lg:flex-row flex-grow gap-10 min-h-0">
+                <main class="flex-1 min-w-0 flex flex-col gap-8">
+                    <section class="rounded-2xl p-6 shadow-md" style="background-color: rgba(39, 37, 38, 0.5);">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-5" style="color: white;">
+                            Current Task: <span id="current-card" style="color: var(--primary);" aria-live="polite">None</span>
+                        </h3>
+                    </section>
+
+                    <section class="rounded-2xl p-6 shadow-md relative" id="cast-estimates-panel" style="background-color: rgba(39, 37, 38, 0.5);">
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-5" style="color: white;">
+                            Cast Your Estimate
+                        </h3>
+                        <div id="cards-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+                        <div
+                                id="voting-closed-message"
+                                class="absolute inset-0 flex items-center justify-center text-lg font-semibold hidden rounded-2xl"
+                                style="background-color: rgba(17, 24, 39, 0.8); color: var(--primary);"
+                                aria-live="polite"
+                        >
+                            Voting Closed
+                        </div>
+                    </section>
+
+                    <button
+                            id="show-votes-button"
+                            type="button"
+                            class="w-full py-4 rounded-lg font-semibold text-lg shadow-md hidden transition-all duration-300"
+                            style="background: var(--gradient); color: white;"
+                            onmouseover="this.style.background='linear-gradient(to right, var(--secondary), var(--primary))'"
+                            onmouseout="this.style.background='var(--gradient)'"
+                            aria-label="Reveal voting estimates"
+                    >
+                        Reveal Estimates
+                    </button>
+
+                    <div id="room-url-container-vote" class="mt-8 hidden max-w-lg mx-auto">
+                        <label for="room-url-vote" class="block text-sm font-medium mb-3" style="color: #D1D5DB;">
+                            Room Link
+                        </label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input
+                                    id="room-url-vote"
+                                    type="text"
+                                    readonly
+                                    class="flex-1 p-4 rounded-lg focus:outline-none transition-all duration-200"
+                                    style="background-color: rgba(17, 24, 39, 0.7); color: var(--primary);"
+                                    aria-readonly="true"
+                            />
+                            <button
+                                    id="copy-room-url-vote"
+                                    type="button"
+                                    class="px-6 py-3 rounded-lg font-semibold shadow-md transition-all duration-300"
+                                    style="background: var(--gradient); color: black;"
+                                    onmouseover="this.style.background='linear-gradient(to right, var(--secondary), var(--primary))'"
+                                    onmouseout="this.style.background='var(--gradient)'"
+                            >
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <section
+                            id="manual-ticket-entry"
+                            class="rounded-2xl p-6 shadow-md mt-6 hidden"
+                            style="background-color: rgba(39, 37, 38, 0.5);"
+                            data-section="manual-tickets"
+                    >
+                        <h3 class="text-xl sm:text-2xl font-semibold mb-4" style="color: white;">
+                            Add Tickets Manually
+                        </h3>
+                        <textarea
+                                id="manual-tickets-input"
+                                rows="6"
+                                placeholder="Paste one ticket per line, e.g.:\nABC-123: Fix login bug\nDEF-456: Add new endpoint"
+                                class="w-full p-4 rounded-lg text-white placeholder-gray-500 focus:outline-none transition-all duration-200 resize-none"
+                                style="background-color: rgba(17, 24, 39, 0.7); border: 2px solid transparent;"
+                                onfocus="this.style.borderColor='var(--primary)'"
+                                onblur="this.style.borderColor='transparent'"
+                                aria-label="Manual ticket input"
+                        ></textarea>
+                        <button
+                                id="add-manual-tickets"
+                                type="button"
+                                class="mt-4 px-6 py-3 rounded-lg font-semibold shadow-md transition-all duration-300"
+                                style="background: var(--gradient); color: black;"
+                                onmouseover="this.style.background='linear-gradient(to right, var(--secondary), var(--primary))'"
+                                onmouseout="this.style.background='var(--gradient)'"
+                        >
+                            Add Tickets
+                        </button>
+                        <div id="manual-tickets-list" class="mt-4 space-y-2"></div>
+                    </section>
+
+                    <section id="jira-integration-section" class="mt-6" data-section="jira-integration"></section>
+                </main>
+
+                <aside
+                        class="lg:w-80 shrink-0 rounded-2xl p-6 shadow-md max-h-[calc(100vh-10rem)] overflow-y-auto scrollbar-thin"
+                        style="background-color: rgba(39, 37, 38, 0.5); scrollbar-color: var(--primary) rgba(17, 24, 39, 0.5);"
+                        role="complementary"
+                        aria-label="Team members panel"
+                >
+                    <h3 class="text-xl sm:text-2xl font-semibold mb-5" style="color: white;">Team Members</h3>
+                    <ul id="participants-list" class="space-y-4" style="color: #D1D5DB;" aria-live="polite"></ul>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <div
+            id="vote-chart-modal"
+            class="fixed inset-0 flex items-center justify-center hidden z-50"
+            style="background-color: rgba(0, 0, 0, 0.5);"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="vote-chart-title"
+    >
+        <div class="rounded-xl p-4 max-w-md w-full mx-4 shadow-lg backdrop-blur-md space-y-4" style="background-color: rgba(17, 24, 39, 0.9);">
+            <div class="flex justify-between items-center">
+                <h3 id="vote-chart-title" class="text-xl font-semibold" style="color: #99F6E4;">Vote Distribution</h3>
+                <button
+                        id="close-chart-modal"
+                        class="transition-colors"
+                        style="color: #99F6E4;"
+                        onmouseover="this.style.color='#5EEAD4'"
+                        onmouseout="this.style.color='#99F6E4'"
+                        aria-label="Close vote distribution modal"
+                >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <canvas id="vote-pie-chart" class="w-full h-28" aria-label="Vote distribution chart"></canvas>
+            <div id="vote-breakdown" class="pr-2 pt-0" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <footer class="p-6 text-center text-sm" style="color: #6B7280;">
+        © 2025 PokerPoint. All rights reserved.
+    </footer>
+
+    <div
+            id="loading-spinner"
+            class="fixed inset-0 flex flex-col items-center justify-center z-50 hidden"
+            style="background-color: rgba(0, 0, 0, 0.6);"
+            aria-live="polite"
+            aria-label="Loading indicator"
+    >
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-opacity-75" style="border-color: var(--primary);"></div>
+        <p class="text-white text-lg font-semibold">Loading...</p>
+    </div>
+</div>
+
+<div id="theme-toggle">
+    <label>Theme:</label>
+    <select id="theme-selector">
+        <option value="orange">Orange</option>
+        <option value="lime">Lime</option>
+        <option value="kiwi">Kiwi</option>
+        <option value="ocean">Ocean</option>
+        <option value="rose">Rose</option>
+        <option value="frost">Frost</option>
+        <option value="sunset">Sunset</option>
+        <option value="void">Void</option>
+        <option value="forest">Forest</option>
+        <option value="aurora">Aurora</option>
+    </select>
+</div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script defer src="./assets/js/index.js"></script>
+
+<script>
+    const themeSelector = document.getElementById('theme-selector');
+    const savedTheme = localStorage.getItem('theme') || 'orange';
+    document.body.classList.add('theme-' + savedTheme);
+    themeSelector.value = savedTheme;
+
+    themeSelector.addEventListener('change', (e) => {
+        const currentClasses = Array.from(document.body.classList);
+        currentClasses.forEach(cls => {
+            if (cls.startsWith('theme-')) document.body.classList.remove(cls);
+        });
+
+        const newTheme = e.target.value;
+        document.body.classList.add('theme-' + newTheme);
+        localStorage.setItem('theme', newTheme);
+        applyTheme(newTheme);
+    });
+
+    const themes = {
+        orange: {
+            '--main-bg': '#1A0E00',
+            '--primary': '#FF8D29',
+            '--secondary': '#CE5900',
+            '--gradient': 'linear-gradient(to right, #FF8D29, #CE5900)'
+        },
+        lime: {
+            '--main-bg': '#001F00',
+            '--primary': '#BFFF00',
+            '--secondary': '#7FFF00',
+            '--gradient': 'linear-gradient(to right, #BFFF00, #7FFF00)'
+        },
+        kiwi: {
+            '--main-bg': '#101D10',
+            '--primary': '#66FF66',
+            '--secondary': '#228B22',
+            '--gradient': 'linear-gradient(to right, #66FF66, #228B22)'
+        },
+        ocean: {
+            '--main-bg': '#001f33',
+            '--primary': '#00aaff',
+            '--secondary': '#0077be',
+            '--gradient': 'linear-gradient(to right, #00aaff, #0077be)'
+        },
+        rose: {
+            '--main-bg': '#2a001b',
+            '--primary': '#f06292',
+            '--secondary': '#c2185b',
+            '--gradient': 'linear-gradient(to right, #f06292, #c2185b)'
+        },
+        frost: {
+            '--main-bg': '#0a1a2f',
+            '--primary': '#5dade2',
+            '--secondary': '#3498db',
+            '--gradient': 'linear-gradient(to right, #5dade2, #3498db)'
+        },
+        sunset: {
+            '--main-bg': '#2b0f0e',
+            '--primary': '#ff9966',
+            '--secondary': '#ff5e62',
+            '--gradient': 'linear-gradient(to right, #ff9966, #ff5e62)'
+        },
+        void: {
+            '--main-bg': '#120018',
+            '--primary': '#8a2be2',
+            '--secondary': '#4b0082',
+            '--gradient': 'linear-gradient(to right, #8a2be2, #4b0082)'
+        },
+        forest: {
+            '--main-bg': '#0e1f0e',
+            '--primary': '#3cb371',
+            '--secondary': '#2e8b57',
+            '--gradient': 'linear-gradient(to right, #3cb371, #2e8b57)'
+        },
+        aurora: {
+            '--main-bg': '#1f2937',
+            '--primary': '#6366f1',
+            '--secondary': '#14b8a6',
+            '--gradient': 'linear-gradient(to right, #6366f1, #14b8a6)'
+        },
+    };
+
+    function applyTheme(themeName) {
+        const theme = themes[themeName];
+        for (let key in theme) {
+            document.documentElement.style.setProperty(key, theme[key]);
+        }
+    }
+
+    applyTheme(savedTheme);
+</script>
+</body>
+</html>
