@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PokerPoint - Privacy Policy</title>
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tos {
+            width: 50%;
+            margin: 2rem auto;
+            font-weight: normal;
+            font-size: 1rem;
+            color: darkgray;
+            line-height: 1.6;
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-left: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-top: 1rem;
+        }
+
+        a {
+            color: darkgray;
+            font-weight: normal;
+        }
+
+        li {
+            color: darkgray;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .footer {
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+
+<body class="top-gradient theme-orange">
+<div class="container">
+
+    <main class="tos">
+        <h1>Privacy Policy</h1>
+        <p><strong>Effective Date:</strong> 05/06/2025</p>
+
+        <p>PokerPoint ("we", "our", or "us") values your privacy. This Privacy Policy explains how we collect, use, and manage information when you use our website (<a href="https://pokerpoint.co.uk">https://pokerpoint.co.uk</a>).</p>
+
+        <p><strong>1. Information We Collect</strong><br>
+            We collect only the information needed to support your session experience:</p>
+        <ul>
+            <li>Room name</li>
+            <li>Estimation card settings</li>
+            <li>Participant display names (which users may choose to make personally identifiable)</li>
+            <li>Votes and session metadata</li>
+            <li>Jira access tokens and linked issue information (if Jira integration is used)</li>
+        </ul>
+
+        <p><strong>2. Data Usage</strong><br>
+            We use the data solely to support planning poker sessions and optional Jira linking. We do not use your data for advertising or analytics.</p>
+
+        <p><strong>3. Data Retention & Deletion</strong><br>
+            All data is temporary. We use DynamoDB with TTL (Time to Live) policies to automatically delete:</p>
+        <ul>
+            <li>Room session data</li>
+            <li>Participant display names</li>
+            <li>Jira tokens and related metadata</li>
+        </ul>
+        <p>Data is purged after 8 hours of creation</p>
+
+        <p><strong>4. Local Storage</strong><br>
+            We may use your browser’s <code>localStorage</code> to remember your theme selection and optionally your display name. This data is stored only in your browser and never sent to our servers.</p>
+
+        <p><strong>5. Data Sharing</strong><br>
+            We do not share, sell, or transfer your data to any third parties. No third-party trackers or analytics tools are used.</p>
+
+        <p><strong>6. Children’s Privacy</strong><br>
+            PokerPoint is not intended for children under 13. We do not knowingly collect personal data from children.</p>
+
+        <p><strong>7. Your Rights</strong><br>
+            If you are located in the UK or EU, you may have rights under the GDPR/UK GDPR. Because all data is short-lived and automatically deleted, we may not retain any data to process your request.</p>
+
+        <p><strong>8. Changes to This Policy</strong><br>
+            We may update this policy periodically. If changes are made, the new policy will be posted here with the revised date above.</p>
+
+        <p><strong>9. Contact Us</strong><br>
+            Questions? Contact us at <a href="mailto:support@wannaverse.com">support@wannaverse.com</a>.</p>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2025 PokerPoint. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+<div id="theme-toggle">
+    <label for="theme-selector">Theme:</label>
+    <select id="theme-selector">
+        <option value="orange">Orange</option>
+        <option value="lime">Lime</option>
+        <option value="kiwi">Kiwi</option>
+        <option value="ocean">Ocean</option>
+        <option value="rose">Rose</option>
+        <option value="frost">Frost</option>
+        <option value="sunset">Sunset</option>
+        <option value="void">Void</option>
+        <option value="forest">Forest</option>
+        <option value="aurora">Aurora</option>
+    </select>
+</div>
+
+<script>
+    const themeSelector = document.getElementById('theme-selector');
+    const savedTheme = localStorage.getItem('theme') || 'orange';
+    document.body.classList.add('theme-' + savedTheme);
+    themeSelector.value = savedTheme;
+
+    themeSelector.addEventListener('change', (e) => {
+        document.body.className = document.body.className
+            .split(' ')
+            .filter(cls => !cls.startsWith('theme-'))
+            .join(' ');
+        const newTheme = e.target.value;
+        document.body.classList.add('theme-' + newTheme);
+        localStorage.setItem('theme', newTheme);
+        applyTheme(newTheme);
+    });
+
+    const themes = {
+        orange: { '--main-bg': '#1A0E00', '--primary': '#FF8D29', '--gradient': 'linear-gradient(to right, #FFB347, #FF8C00)' },
+        lime: { '--main-bg': '#001F00', '--primary': '#BFFF00', '--gradient': 'linear-gradient(to right, #BFFF00, #7FFF00)' },
+        kiwi: { '--main-bg': '#101D10', '--primary': '#66FF66', '--gradient': 'linear-gradient(to right, #66FF66, #228B22)' },
+        ocean: { '--main-bg': '#001f33', '--primary': '#00aaff', '--gradient': 'linear-gradient(to right, #00aaff, #0077be)' },
+        rose: { '--main-bg': '#2a001b', '--primary': '#f06292', '--gradient': 'linear-gradient(to right, #f06292, #c2185b)' },
+        frost: { '--main-bg': '#0a1a2f', '--primary': '#5dade2', '--gradient': 'linear-gradient(to right, #5dade2, #3498db)' },
+        sunset: { '--main-bg': '#2b0f0e', '--primary': '#ff9966', '--gradient': 'linear-gradient(to right, #ff9966, #ff5e62)' },
+        void: { '--main-bg': '#120018', '--primary': '#8a2be2', '--gradient': 'linear-gradient(to right, #8a2be2, #4b0082)' },
+        forest: { '--main-bg': '#0e1f0e', '--primary': '#3cb371', '--gradient': 'linear-gradient(to right, #3cb371, #2e8b57)' },
+        aurora: { '--main-bg': '#1f2937', '--primary': '#6366f1', '--gradient': 'linear-gradient(to right, #6366f1, #14b8a6)' }
+    };
+
+    function applyTheme(themeName) {
+        const theme = themes[themeName];
+        for (const key in theme) {
+            document.documentElement.style.setProperty(key, theme[key]);
+        }
+    }
+
+    applyTheme(savedTheme);
+</script>
+</body>
+</html>
