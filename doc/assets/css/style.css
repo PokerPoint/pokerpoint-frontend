@@ -372,6 +372,16 @@ button {
         order: -1;
     }
 
+    .logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #why {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .nav-links {
         display: none;
         flex-direction: column;
@@ -404,6 +414,8 @@ button {
     .box {
         width: 100%;
         max-width: 20rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .how-it-works-text .heading {
