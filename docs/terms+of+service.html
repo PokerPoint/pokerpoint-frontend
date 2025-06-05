@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PokerPoint - Terms of Service</title>
+
+    <!-- Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tos {
+            width: 50%;
+            margin: 2rem auto;
+            font-weight: normal;
+            font-size: 1rem;
+            color: darkgray;
+            line-height: 1.6;
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-left: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-top: 1rem;
+        }
+
+        a {
+            color: darkgray;
+            font-weight: normal;
+        }
+
+        li {
+            color: darkgray;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .footer {
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+
+<body class="top-gradient theme-orange">
+<div class="container">
+
+    <main class="tos">
+        <h1>Terms of Service</h1>
+        <p><strong>Effective Date:</strong> 05/06/2025</p>
+
+        <p>Welcome to PokerPoint! By accessing or using our website (<a href="https://pokerpoint.co.uk">https://pokerpoint.co.uk</a>), you agree to be bound by these Terms of Service ("Terms"). Please read them carefully.</p>
+
+        <p><strong>1. Acceptance of Terms</strong><br>
+            By using PokerPoint, you agree to comply with and be legally bound by these Terms. If you do not agree, do not use the site.</p>
+
+        <p><strong>2. Description of Service</strong><br>
+            PokerPoint provides a free, open-source platform for agile teams to conduct planning poker sessions. Users can create rooms, invite participants, and estimate tasks collaboratively. No user registration is required.</p>
+
+        <p><strong>3. User Conduct</strong><br>
+            You agree to use PokerPoint lawfully and respectfully. Prohibited behavior includes:</p>
+        <ul>
+            <li>Uploading or transmitting malicious software or harmful content.</li>
+            <li>Attempting unauthorized access to site infrastructure.</li>
+            <li>Using the platform for harassment or illegal activity.</li>
+        </ul>
+
+        <p><strong>4. Intellectual Property</strong><br>
+            All content on PokerPoint is the property of PokerPoint or its content suppliers. Open-source code is under the MIT License (see our GitHub).</p>
+
+        <p><strong>5. Disclaimer of Warranties</strong><br>
+            PokerPoint is provided "as is" without warranties. We do not guarantee error-free or uninterrupted service.</p>
+
+        <p><strong>6. Limitation of Liability</strong><br>
+            To the fullest extent permitted by law, PokerPoint shall not be liable for any indirect, incidental, or consequential damages from use or inability to use the website.</p>
+
+        <p><strong>7. Changes to the Terms</strong><br>
+            We may modify these Terms at any time. Changes will be posted on this page with the updated effective date. Continued use constitutes acceptance.</p>
+
+        <p><strong>8. Governing Law</strong><br>
+            These Terms are governed by the laws of England and Wales. Disputes shall be subject to the exclusive jurisdiction of its courts.</p>
+
+        <p><strong>9. Contact Us</strong><br>
+            Questions? Email us at <a href="mailto:support@wannaverse.com">support@wannaverse.com</a>.</p>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2025 PokerPoint. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+<div id="theme-toggle">
+    <label for="theme-selector">Theme:</label>
+    <select id="theme-selector">
+        <option value="orange">Orange</option>
+        <option value="lime">Lime</option>
+        <option value="kiwi">Kiwi</option>
+        <option value="ocean">Ocean</option>
+        <option value="rose">Rose</option>
+        <option value="frost">Frost</option>
+        <option value="sunset">Sunset</option>
+        <option value="void">Void</option>
+        <option value="forest">Forest</option>
+        <option value="aurora">Aurora</option>
+    </select>
+</div>
+
+<script>
+    const themeSelector = document.getElementById('theme-selector');
+    const savedTheme = localStorage.getItem('theme') || 'orange';
+    document.body.classList.add('theme-' + savedTheme);
+    themeSelector.value = savedTheme;
+
+    themeSelector.addEventListener('change', (e) => {
+        document.body.className = document.body.className
+            .split(' ')
+            .filter(cls => !cls.startsWith('theme-'))
+            .join(' ');
+        const newTheme = e.target.value;
+        document.body.classList.add('theme-' + newTheme);
+        localStorage.setItem('theme', newTheme);
+        applyTheme(newTheme);
+    });
+
+    const themes = {
+        orange: { '--main-bg': '#1A0E00', '--primary': '#FF8D29', '--gradient': 'linear-gradient(to right, #FFB347, #FF8C00)' },
+        lime: { '--main-bg': '#001F00', '--primary': '#BFFF00', '--gradient': 'linear-gradient(to right, #BFFF00, #7FFF00)' },
+        kiwi: { '--main-bg': '#101D10', '--primary': '#66FF66', '--gradient': 'linear-gradient(to right, #66FF66, #228B22)' },
+        ocean: { '--main-bg': '#001f33', '--primary': '#00aaff', '--gradient': 'linear-gradient(to right, #00aaff, #0077be)' },
+        rose: { '--main-bg': '#2a001b', '--primary': '#f06292', '--gradient': 'linear-gradient(to right, #f06292, #c2185b)' },
+        frost: { '--main-bg': '#0a1a2f', '--primary': '#5dade2', '--gradient': 'linear-gradient(to right, #5dade2, #3498db)' },
+        sunset: { '--main-bg': '#2b0f0e', '--primary': '#ff9966', '--gradient': 'linear-gradient(to right, #ff9966, #ff5e62)' },
+        void: { '--main-bg': '#120018', '--primary': '#8a2be2', '--gradient': 'linear-gradient(to right, #8a2be2, #4b0082)' },
+        forest: { '--main-bg': '#0e1f0e', '--primary': '#3cb371', '--gradient': 'linear-gradient(to right, #3cb371, #2e8b57)' },
+        aurora: { '--main-bg': '#1f2937', '--primary': '#6366f1', '--gradient': 'linear-gradient(to right, #6366f1, #14b8a6)' }
+    };
+
+    function applyTheme(themeName) {
+        const theme = themes[themeName];
+        for (const key in theme) {
+            document.documentElement.style.setProperty(key, theme[key]);
+        }
+    }
+
+    applyTheme(savedTheme);
+</script>
+</body>
+</html>
