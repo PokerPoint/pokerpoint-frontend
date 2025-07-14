@@ -322,6 +322,8 @@ class UIManager {
         urlContainer.classList.remove('hidden');
         document.getElementById('join-room-id').value = roomId;
 
+        window.location.href = roomUrlInput.value;
+
         copyButton.textContent = 'Copy';
         copyButton.onclick = () => {
             roomUrlInput.select();
