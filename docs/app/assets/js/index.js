@@ -117,6 +117,7 @@ class WebSocketService {
                 displayName,
                 userId: StorageManager.getUserUUID()
             });
+            this.startHeartbeat();
         };
 
         this.socket.onmessage = (event) => {
@@ -156,6 +157,16 @@ class WebSocketService {
             this.socket = null;
             this.currentRoomId = null;
         }
+    }
+
+    /**
+     * Sends a heart beat to the server every 1 minute(s) to keep connection alive
+     */
+    startHeartbeat() {
+        setInterval(() => {
+            this.sendMessage({ action: 'heartbeat' });
+            console.log("heart beat sent")
+        }, 60000);
     }
 }
 
