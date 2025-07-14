@@ -987,5 +987,12 @@ document.addEventListener('DOMContentLoaded', () => {
     uiManager.init(wsService);
 });
 
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        document.getElementById('close-chart-modal').click();
+    }
+});
+
+
 // Expose global functions for inline event handlers
 window.uiManager = uiManager;
