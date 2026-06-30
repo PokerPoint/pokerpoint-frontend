@@ -1,0 +1,51 @@
+.wrap {
+	max-width: 760px;
+	padding-block: clamp(2.5rem, 7vw, 4.5rem);
+}
+
+.head {
+	margin-bottom: 2.5rem;
+}
+
+.title {
+	font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.date {
+	margin-top: 0.6rem;
+	color: var(--ink-faint);
+	font-size: 0.9rem;
+}
+
+.prose {
+	color: var(--ink-dim);
+	font-size: 1rem;
+	line-height: 1.75;
+}
+
+.prose h2 {
+	color: var(--ink);
+	font-size: 1.2rem;
+	margin-top: 2rem;
+	margin-bottom: 0.6rem;
+}
+
+.prose p {
+	margin-bottom: 1rem;
+}
+
+.prose ul {
+	margin: 0 0 1rem 1.2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+}
+
+.prose a {
+	color: var(--accent-strong);
+	font-weight: 600;
+}
+
+.prose a:hover {
+	text-decoration: underline;
+}

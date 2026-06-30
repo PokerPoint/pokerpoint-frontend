@@ -1,0 +1,47 @@
+.wrap {
+	background: var(--surface-sunken);
+}
+
+.inner {
+	padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+.head {
+	max-width: 44rem;
+	margin-bottom: 3.5rem;
+}
+
+.title {
+	font-size: clamp(2.1rem, 4.6vw, 3.3rem);
+	margin-top: 1rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: clamp(2rem, 5vw, 4rem);
+}
+
+.item {
+	max-width: 30rem;
+}
+
+.rule {
+	display: block;
+	width: 42px;
+	height: 3px;
+	border-radius: 3px;
+	background: var(--accent);
+	margin-bottom: 1.4rem;
+}
+
+.itemTitle {
+	font-size: 1.45rem;
+	margin-bottom: 0.7rem;
+}
+
+.itemBody {
+	color: var(--ink-dim);
+	font-size: 1.02rem;
+	line-height: 1.7;
+}

@@ -1,0 +1,143 @@
+.panel {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+}
+
+.head {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.label {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--ink-faint);
+}
+
+.count {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 22px;
+	height: 22px;
+	padding-inline: 0.4rem;
+	border-radius: 999px;
+	background: var(--accent-soft);
+	color: var(--accent-text);
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	font-weight: 600;
+}
+
+.sub {
+	font-size: 0.86rem;
+	color: var(--ink-dim);
+	margin-top: -0.3rem;
+}
+
+.textarea {
+	width: 100%;
+	padding: 0.8rem 1rem;
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--line-strong);
+	background: var(--surface-2);
+	font-size: 0.92rem;
+	resize: vertical;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.textarea:focus {
+	outline: none;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.add {
+	align-self: flex-start;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	list-style: none;
+	margin-top: 0.4rem;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.6rem 0.7rem;
+	border-radius: var(--radius-sm);
+	background: var(--surface-2);
+	border: 1px solid var(--line);
+	transition: border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+.current {
+	box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.dragging {
+	opacity: 0.5;
+}
+
+.grip {
+	display: inline-flex;
+	color: var(--ink-faint);
+	cursor: grab;
+	flex-shrink: 0;
+}
+
+.row:active .grip {
+	cursor: grabbing;
+}
+
+.text {
+	flex: 1;
+	min-width: 0;
+	font-size: 0.9rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.badge {
+	flex-shrink: 0;
+	font-family: var(--font-mono);
+	font-size: 0.62rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--accent-text);
+}
+
+.iconBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 7px;
+	border: 1px solid var(--line-strong);
+	background: var(--surface);
+	color: var(--ink-dim);
+	flex-shrink: 0;
+	transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.iconBtn:hover {
+	border-color: var(--accent);
+	color: var(--accent-text);
+}
+
+.removeBtn:hover {
+	border-color: #ef4444;
+	color: #ef4444;
+}

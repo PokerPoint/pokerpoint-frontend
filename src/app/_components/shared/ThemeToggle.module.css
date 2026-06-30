@@ -1,0 +1,23 @@
+.toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 999px;
+	border: 1px solid var(--line-strong);
+	background: var(--surface-2);
+	color: var(--ink);
+	transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.toggle:hover {
+	border-color: var(--accent);
+	color: var(--accent-strong);
+	transform: translateY(-1px);
+}
+
+.placeholder {
+	width: 18px;
+	height: 18px;
+}

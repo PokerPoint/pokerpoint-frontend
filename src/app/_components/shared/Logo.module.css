@@ -1,0 +1,21 @@
+.logo {
+	display: inline-flex;
+	align-items: center;
+}
+
+.logo img {
+	height: 30px;
+	width: auto;
+}
+
+.light {
+	display: none;
+}
+
+:global(html:not(.dark)) .dark {
+	display: none;
+}
+
+:global(html:not(.dark)) .light {
+	display: inline;
+}
