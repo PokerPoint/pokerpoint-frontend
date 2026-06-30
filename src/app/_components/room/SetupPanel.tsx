@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import Glass from "../shared/Glass";
 import Button from "../shared/Button";
 import Spinner from "../shared/Spinner";
 import { useToast } from "../shared/Toast";
@@ -75,12 +74,10 @@ export default function SetupPanel({ defaultRoomId, defaultName, onCreate, onJoi
 
 	return (
 		<div className={style.wrap}>
-			<div className={style.intro}>
-				<h1 className={style.heading}>Start estimating</h1>
-				<p className={style.sub}>Create a room or join one with an ID. It takes seconds.</p>
-			</div>
+			<div className={`gridTexture ${style.grid}`} aria-hidden="true" />
+			<div className={style.glow} aria-hidden="true" />
 
-			<Glass className={style.card}>
+			<div className={style.card}>
 				<div className={style.tabs} role="tablist">
 					<button
 						type="button"
@@ -169,7 +166,7 @@ export default function SetupPanel({ defaultRoomId, defaultName, onCreate, onJoi
 						</Button>
 					</form>
 				)}
-			</Glass>
+			</div>
 		</div>
 	);
 }

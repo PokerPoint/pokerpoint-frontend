@@ -22,12 +22,8 @@
 	flex-direction: column;
 	gap: 1.6rem;
 	min-width: 0;
-	align-self: start;
 	background: var(--surface);
-	border-radius: var(--radius-lg);
-	box-shadow: var(--shadow);
-	padding: clamp(1.4rem, 2vw, 1.8rem);
-	margin-top: 1.6rem;
+	padding: clamp(1.4rem, 2.6vw, 2.4rem) clamp(1.4rem, 2vw, 1.8rem) 3rem;
 }
 
 .divider {
