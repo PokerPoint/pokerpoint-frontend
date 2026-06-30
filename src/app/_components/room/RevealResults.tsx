@@ -67,7 +67,7 @@ export default function RevealResults({ votes, displayNameFor }: Props) {
 			</div>
 
 			<div className={style.chart}>
-				<ResponsiveContainer width="100%" height={Math.max(140, summary.chartData.length * 46)}>
+				<ResponsiveContainer width="100%" height={Math.max(120, summary.chartData.length * 44)}>
 					<BarChart
 						data={summary.chartData}
 						layout="vertical"
@@ -77,22 +77,22 @@ export default function RevealResults({ votes, displayNameFor }: Props) {
 						<YAxis
 							type="category"
 							dataKey="name"
-							width={48}
+							width={44}
 							tickLine={false}
 							axisLine={false}
 							tick={{ fill: "currentColor", fontWeight: 700 }}
 						/>
 						<Tooltip
-							cursor={{ fill: "rgba(255, 141, 41, 0.14)" }}
+							cursor={false}
 							contentStyle={{
 								background: "var(--surface)",
 								border: "1px solid var(--line-strong)",
-								borderRadius: "12px",
+								borderRadius: "10px",
 								color: "var(--ink)",
 							}}
 							formatter={(value: number) => [`${value} vote${value === 1 ? "" : "s"}`, "Votes"]}
 						/>
-						<Bar dataKey="count" radius={[6, 6, 6, 6]} barSize={26}>
+						<Bar dataKey="count" radius={[5, 5, 5, 5]} barSize={24}>
 							{summary.chartData.map((entry, index) => (
 								<Cell key={entry.name} fill={chartColors[index % chartColors.length]} />
 							))}
@@ -110,13 +110,7 @@ export default function RevealResults({ votes, displayNameFor }: Props) {
 								{names.length} vote{names.length === 1 ? "" : "s"}
 							</span>
 						</div>
-						<div className={style.voters}>
-							{names.map((name, index) => (
-								<span key={`${vote}-${index}`} className={style.voter}>
-									{name}
-								</span>
-							))}
-						</div>
+						<p className={style.voters}>{names.join(", ")}</p>
 					</div>
 				))}
 			</div>

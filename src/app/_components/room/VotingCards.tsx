@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import style from "./VotingCards.module.css";
 
 interface Props {
@@ -9,9 +9,19 @@ interface Props {
 	votingOpen: boolean;
 	currentCard: string;
 	onVote: (value: string) => void;
+	action?: ReactNode;
+	showHeader?: boolean;
 }
 
-export default function VotingCards({ cards, selectedVote, votingOpen, currentCard, onVote }: Props) {
+export default function VotingCards({
+	cards,
+	selectedVote,
+	votingOpen,
+	currentCard,
+	onVote,
+	action,
+	showHeader = true,
+}: Props) {
 	useEffect(() => {
 		if (!votingOpen) return;
 		const onKey = (event: KeyboardEvent) => {
@@ -28,18 +38,25 @@ export default function VotingCards({ cards, selectedVote, votingOpen, currentCa
 
 	return (
 		<section className={style.panel}>
-			<header className={style.head}>
-				<div>
-					<span className={style.eyebrow}>Now estimating</span>
-					<h2 className={style.task}>{votingOpen ? currentCard : "Waiting for the next ticket"}</h2>
-				</div>
-				{selectedVote !== null && votingOpen && (
-					<span className={style.your}>
-						Your vote
-						<strong>{selectedVote}</strong>
-					</span>
-				)}
-			</header>
+			{showHeader && (
+				<header className={style.head}>
+					<div className={style.heading}>
+						<span className={style.label}>Now estimating</span>
+						<h2 className={style.task}>
+							{votingOpen ? currentCard : "Waiting for the next ticket"}
+						</h2>
+					</div>
+					<div className={style.headActions}>
+						{selectedVote !== null && votingOpen && (
+							<span className={style.your}>
+								Your vote
+								<strong>{selectedVote}</strong>
+							</span>
+						)}
+						{action}
+					</div>
+				</header>
+			)}
 
 			<div className={`${style.grid} ${votingOpen ? "" : style.closed}`}>
 				{cards.map((value, index) => (
@@ -56,13 +73,11 @@ export default function VotingCards({ cards, selectedVote, votingOpen, currentCa
 				))}
 			</div>
 
-			{!votingOpen && (
-				<p className={style.hint}>
-					The room owner has not opened a ticket yet. Hang tight, voting starts when a ticket is
-					set.
-				</p>
-			)}
-			{votingOpen && <p className={style.hint}>Tip: press the number on a card to vote.</p>}
+			<p className={style.hint}>
+				{votingOpen
+					? "Press the number on a card to vote, or click it."
+					: "The room owner has not opened a ticket yet. Voting starts when a ticket is set."}
+			</p>
 		</section>
 	);
 }

@@ -1,44 +1,50 @@
 .share {
 	display: flex;
-	align-items: center;
-	gap: 0.6rem;
-	padding: 0.5rem 0.5rem 0.5rem 0.85rem;
-	border-radius: 999px;
+	align-items: stretch;
+	border-radius: var(--radius-sm);
 	border: 1px solid var(--line-strong);
 	background: var(--surface-2);
+	overflow: hidden;
 }
 
 .icon {
-	display: inline-flex;
-	color: var(--accent-strong);
+	display: flex;
+	align-items: center;
+	padding-inline: 0.7rem 0.35rem;
+	color: var(--ink-faint);
 	flex-shrink: 0;
 }
 
 .url {
 	flex: 1;
 	min-width: 0;
+	display: flex;
+	align-items: center;
+	padding-block: 0.6rem;
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
+	color: var(--ink-dim);
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	font-size: 0.85rem;
-	color: var(--ink-dim);
 }
 
 .copy {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.4rem;
-	padding: 0.5rem 0.9rem;
-	border-radius: 999px;
-	border: none;
-	background: var(--accent-gradient);
-	color: #fff;
-	font-size: 0.84rem;
-	font-weight: 700;
 	flex-shrink: 0;
-	transition: transform 0.2s ease;
+	padding-inline: 0.9rem;
+	border: none;
+	border-left: 1px solid var(--line-strong);
+	background: var(--surface);
+	color: var(--ink-dim);
+	font-size: 0.8rem;
+	font-weight: 600;
+	transition: color 0.2s ease, background 0.2s ease;
 }
 
 .copy:hover {
-	transform: translateY(-1px);
+	color: var(--accent-text);
+	background: var(--surface-3);
 }

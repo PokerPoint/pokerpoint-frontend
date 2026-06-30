@@ -1,9 +1,5 @@
 .panel {
-	background: var(--surface);
-	border: 1px solid var(--line);
-	border-radius: var(--radius);
-	box-shadow: var(--shadow);
-	padding: 1.3rem;
+	padding: 0;
 }
 
 .head {
@@ -18,7 +14,12 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
-	font-weight: 700;
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--ink-faint);
 }
 
 .count {

@@ -52,7 +52,7 @@ export default function JiraPanel({ roomId, tickets, onFetch, onSetCard }: Props
 			<div className={style.panel}>
 				<h3 className={style.title}>Import from Jira</h3>
 				<p className={style.sub}>Link your Jira account to pull tickets with JQL.</p>
-				<Button type="button" href={buildJiraAuthUrl(roomId)} variant="subtle" className={style.link}>
+				<Button type="button" href={buildJiraAuthUrl(roomId)} className={style.link}>
 					Link Jira
 				</Button>
 			</div>
@@ -71,7 +71,7 @@ export default function JiraPanel({ roomId, tickets, onFetch, onSetCard }: Props
 					onChange={(e) => setJql(e.target.value)}
 					placeholder="project = PROJ AND status = 'To Do'"
 				/>
-				<Button type="button" variant="subtle" onClick={fetchTickets} disabled={fetching}>
+				<Button type="button" onClick={fetchTickets} disabled={fetching}>
 					{fetching ? <Spinner /> : "Fetch"}
 				</Button>
 			</div>

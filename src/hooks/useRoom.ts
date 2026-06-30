@@ -99,8 +99,6 @@ export function useRoom(): UseRoom {
 							break;
 						case "show":
 							setRevealedVotes(message.data);
-							setCurrentCard(NO_CARD);
-							setVotedUserIds(new Set());
 							setSelectedVote(null);
 							break;
 						case "card":
@@ -195,7 +193,7 @@ export function useRoom(): UseRoom {
 		votedUserIds,
 		selectedVote,
 		isOwner,
-		votingOpen: currentCard !== NO_CARD,
+		votingOpen: currentCard !== NO_CARD && revealedVotes === null,
 		revealedVotes,
 		jiraTickets,
 		jiraLinked,
