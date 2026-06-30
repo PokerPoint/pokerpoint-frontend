@@ -1,0 +1,38 @@
+.stack {
+	position: fixed;
+	bottom: 1.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 200;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	width: min(420px, calc(100% - 2rem));
+	pointer-events: none;
+}
+
+.toast {
+	display: flex;
+	align-items: center;
+	gap: 0.65rem;
+	padding: 0.85rem 1.1rem;
+	border-radius: var(--radius);
+	background: var(--surface);
+	border: 1px solid var(--line);
+	box-shadow: var(--shadow);
+	font-size: 0.92rem;
+	font-weight: 500;
+	animation: fadeUp 0.25s ease;
+}
+
+.success {
+	color: var(--success);
+}
+
+.error {
+	color: #ef4444;
+}
+
+.info {
+	color: var(--accent-strong);
+}

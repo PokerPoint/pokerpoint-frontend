@@ -1,0 +1,111 @@
+.panel {
+	display: flex;
+	flex-direction: column;
+	gap: 1.4rem;
+}
+
+.head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.eyebrow {
+	display: block;
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: var(--accent-strong);
+	margin-bottom: 0.4rem;
+}
+
+.task {
+	font-size: clamp(1.3rem, 3vw, 1.8rem);
+	max-width: 36rem;
+}
+
+.your {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.85rem;
+	color: var(--ink-dim);
+}
+
+.your strong {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 32px;
+	height: 32px;
+	padding-inline: 0.4rem;
+	border-radius: 8px;
+	background: var(--accent-gradient);
+	color: #fff;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+	gap: 0.8rem;
+}
+
+.closed {
+	opacity: 0.5;
+	pointer-events: none;
+	filter: grayscale(0.4);
+}
+
+.card {
+	position: relative;
+	aspect-ratio: 3 / 4;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--radius);
+	border: 1.5px solid var(--line-strong);
+	background: var(--surface);
+	color: var(--ink);
+	font-weight: 800;
+	transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.18s ease,
+		box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.card:hover:not(:disabled) {
+	transform: translateY(-5px);
+	border-color: var(--accent);
+	box-shadow: var(--shadow);
+}
+
+.selected {
+	background: var(--accent-gradient);
+	border-color: transparent;
+	color: #fff;
+	transform: translateY(-5px);
+	box-shadow: 0 14px 30px rgba(206, 89, 0, 0.32);
+}
+
+.value {
+	font-size: clamp(1.3rem, 3vw, 1.7rem);
+}
+
+.key {
+	position: absolute;
+	top: 0.45rem;
+	right: 0.55rem;
+	font-size: 0.7rem;
+	font-weight: 600;
+	color: var(--ink-faint);
+}
+
+.selected .key {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.hint {
+	font-size: 0.85rem;
+	color: var(--ink-faint);
+}

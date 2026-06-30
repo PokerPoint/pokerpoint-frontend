@@ -1,0 +1,238 @@
+.section {
+	position: relative;
+	overflow: hidden;
+	padding-top: clamp(3.5rem, 7vw, 6rem);
+}
+
+.grid {
+	position: absolute;
+	inset: 0;
+	opacity: 0.4;
+	mask-image: linear-gradient(to bottom, black, transparent 80%);
+	-webkit-mask-image: linear-gradient(to bottom, black, transparent 80%);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.glow {
+	position: absolute;
+	top: -10%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 95vw;
+	height: 640px;
+	max-width: 1300px;
+	background: radial-gradient(60% 100% at 50% 0%, var(--accent-soft), transparent 70%);
+	opacity: 0.7;
+	pointer-events: none;
+	z-index: 0;
+}
+
+.copy {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.title {
+	font-size: clamp(3rem, 8.4vw, 7.2rem);
+	line-height: 0.98;
+	letter-spacing: -0.03em;
+	max-width: 24ch;
+	margin-block: 1.6rem 1.6rem;
+}
+
+.lead {
+	font-size: clamp(1.08rem, 1.6vw, 1.28rem);
+	color: var(--ink-dim);
+	max-width: 42rem;
+}
+
+.cta {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.8rem;
+	margin-top: 2.3rem;
+}
+
+.arrow {
+	transition: transform 0.25s ease;
+}
+
+.cta a:hover .arrow {
+	transform: translateX(3px);
+}
+
+.fineprint {
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
+	letter-spacing: 0.04em;
+	color: var(--ink-faint);
+	margin-top: 1.6rem;
+}
+
+.showcaseWrap {
+	position: relative;
+	margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.showcase {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1px;
+	background: var(--line);
+	border: 1px solid var(--line-strong);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-lg);
+}
+
+.board,
+.panel {
+	background: var(--surface);
+	padding: clamp(1.4rem, 2.5vw, 2.1rem);
+}
+
+.boardHead {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	padding-bottom: 1.3rem;
+	border-bottom: 1px solid var(--line);
+}
+
+.boardLabel {
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	font-weight: 500;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--accent-text);
+}
+
+.boardTask {
+	font-family: var(--font-display);
+	font-size: clamp(1.15rem, 2vw, 1.5rem);
+	font-weight: 700;
+}
+
+.cards {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: clamp(0.45rem, 1vw, 0.8rem);
+	margin-block: 1.5rem;
+}
+
+.card {
+	aspect-ratio: 3 / 4;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	border: 1.5px solid var(--line-strong);
+	background: var(--surface-2);
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: clamp(1.05rem, 2vw, 1.4rem);
+	color: var(--ink-dim);
+}
+
+.cardActive {
+	border-color: var(--accent);
+	color: var(--accent-text);
+	background: var(--accent-soft);
+	box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.boardFoot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 1.3rem;
+	border-top: 1px solid var(--line);
+}
+
+.footMeta {
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
+	color: var(--ink-faint);
+}
+
+.panelLabel {
+	display: block;
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	font-weight: 500;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--ink-faint);
+	margin-bottom: 1.1rem;
+}
+
+.members {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+}
+
+.member {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+}
+
+.avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 999px;
+	background: var(--surface-3);
+	color: var(--ink-dim);
+	font-size: 0.85rem;
+	font-weight: 700;
+	flex-shrink: 0;
+}
+
+.memberName {
+	flex: 1;
+	font-size: 0.95rem;
+	font-weight: 500;
+}
+
+.tick {
+	width: 18px;
+	height: 18px;
+	border-radius: 999px;
+	border: 1.5px solid var(--line-strong);
+	flex-shrink: 0;
+}
+
+.tickDone {
+	background: var(--success);
+	border-color: var(--success);
+}
+
+.fade {
+	position: absolute;
+	inset-inline: 0;
+	bottom: -1px;
+	height: 90px;
+	background: linear-gradient(to bottom, transparent, var(--bg));
+	z-index: 2;
+	pointer-events: none;
+}
+
+@media (min-width: 860px) {
+	.showcase {
+		grid-template-columns: 1.7fr 1fr;
+	}
+}

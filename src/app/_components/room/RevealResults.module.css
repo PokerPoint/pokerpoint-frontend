@@ -1,0 +1,85 @@
+.wrap {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.stats {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0.75rem;
+}
+
+.stat {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.2rem;
+	padding: 1rem 0.5rem;
+	border-radius: var(--radius);
+	background: var(--surface-2);
+	border: 1px solid var(--line);
+}
+
+.statValue {
+	font-size: 1.6rem;
+	font-weight: 800;
+	color: var(--accent-strong);
+}
+
+.statLabel {
+	font-size: 0.78rem;
+	color: var(--ink-dim);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.chart {
+	width: 100%;
+	color: var(--ink-dim);
+}
+
+.breakdown {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+}
+
+.group {
+	padding: 0.85rem 1rem;
+	border-radius: var(--radius-sm);
+	background: var(--surface-2);
+	border: 1px solid var(--line);
+}
+
+.groupHead {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 0.6rem;
+}
+
+.groupVote {
+	font-weight: 800;
+	color: var(--ink);
+}
+
+.groupCount {
+	font-size: 0.82rem;
+	color: var(--ink-dim);
+}
+
+.voters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+}
+
+.voter {
+	padding: 0.25rem 0.6rem;
+	border-radius: 999px;
+	background: var(--accent-soft);
+	color: var(--accent-strong);
+	font-size: 0.8rem;
+	font-weight: 600;
+}

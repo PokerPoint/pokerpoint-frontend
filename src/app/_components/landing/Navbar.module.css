@@ -1,0 +1,45 @@
+.header {
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	background: color-mix(in srgb, var(--bg) 82%, transparent);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	height: 68px;
+}
+
+.links {
+	display: none;
+	align-items: center;
+	gap: 2rem;
+}
+
+.link {
+	font-size: 0.94rem;
+	font-weight: 500;
+	color: var(--ink-dim);
+	transition: color 0.2s ease;
+}
+
+.link:hover {
+	color: var(--accent-strong);
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+@media (min-width: 820px) {
+	.links {
+		display: flex;
+	}
+}

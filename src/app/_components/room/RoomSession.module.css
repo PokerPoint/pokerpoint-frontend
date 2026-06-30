@@ -1,0 +1,48 @@
+.main {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.4rem;
+	padding-block: 1.6rem 4rem;
+	align-items: start;
+}
+
+.primary {
+	display: flex;
+	flex-direction: column;
+	gap: 1.4rem;
+	min-width: 0;
+}
+
+.stage {
+	padding: 1.6rem;
+}
+
+.ownerBar {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 1.6rem;
+	padding-top: 1.4rem;
+	border-top: 1px solid var(--line);
+}
+
+.tools {
+	display: flex;
+	flex-direction: column;
+	gap: 1.3rem;
+	padding: 1.6rem;
+}
+
+.divider {
+	height: 1px;
+	background: var(--line);
+}
+
+@media (min-width: 920px) {
+	.main {
+		grid-template-columns: minmax(0, 1fr) 320px;
+	}
+
+	.primary {
+		order: 0;
+	}
+}

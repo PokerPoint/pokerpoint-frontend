@@ -1,0 +1,18 @@
+.app {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.setup {
+	flex: 1;
+	display: flex;
+}
+
+.loading {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 4rem 1rem;
+}
