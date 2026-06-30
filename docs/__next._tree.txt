@@ -6,4 +6,4 @@
 :HL["/_next/static/chunks/1_ddinnys869s.css","style"]
 :HL["/logo.svg","image"]
 :HL["/logo-light.svg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"2EcqFGC2HNioUp9JWBNra"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"qGpBgZW-aASbflNS7QOxO"}
