@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
 	return (
-		<LegalPage title="Privacy policy" effectiveDate="05/06/2025">
+		<LegalPage title="Privacy policy" effectiveDate="02/07/2026">
 			<p>
 				PokerPoint ("we", "our", or "us") values your privacy. This Privacy Policy explains how we
 				collect, use, and manage information when you use our website (https://www.pokerpoint.co.uk).
@@ -26,8 +26,9 @@ export default function PrivacyPage() {
 
 			<h2>2. Data usage</h2>
 			<p>
-				We use the data solely to support planning poker sessions and optional Jira linking. We do
-				not use your data for advertising or analytics.
+				We use the data solely to support planning poker sessions and optional Jira linking. With
+				your consent, we also use Google Analytics to understand how the website is used (see
+				&ldquo;Analytics and cookies&rdquo; below). We do not use your data for advertising.
 			</p>
 
 			<h2>3. Data retention and deletion</h2>
@@ -39,36 +40,57 @@ export default function PrivacyPage() {
 
 			<h2>4. Local storage</h2>
 			<p>
-				We may use your browser's localStorage to remember your theme selection and optionally your
-				display name. This data is stored only in your browser and never sent to our servers.
+				We may use your browser's localStorage to remember your theme selection, optionally your
+				display name, and your analytics cookie consent choice. This data is stored only in your
+				browser and never sent to our servers.
 			</p>
 
-			<h2>5. Data sharing</h2>
+			<h2>5. Analytics and cookies</h2>
 			<p>
-				We do not share, sell, or transfer your data to any third parties. No third-party trackers
-				or analytics tools are used.
+				We use Google Analytics 4, a service provided by Google LLC, to understand how visitors use
+				the website (for example, which pages are viewed, approximate location derived from your IP
+				address, and device or browser type). This helps us improve PokerPoint.
+			</p>
+			<p>
+				Analytics cookies are only set with your consent. We use Google Consent Mode, which keeps
+				analytics storage disabled by default until you accept via our cookie banner. If you reject
+				or ignore the banner, no analytics cookies are set. You can change your choice at any time
+				by clearing your browser's site data, which will show the banner again.
+			</p>
+			<p>
+				Google processes this data as described in Google's own privacy policy, available at{" "}
+				<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+					https://policies.google.com/privacy
+				</a>
+				.
 			</p>
 
-			<h2>6. Children's privacy</h2>
+			<h2>6. Data sharing</h2>
+			<p>
+				Other than the Google Analytics processing described above, we do not share, sell, or
+				transfer your data to any third parties.
+			</p>
+
+			<h2>7. Children's privacy</h2>
 			<p>
 				PokerPoint is not intended for children under 13. We do not knowingly collect personal data
 				from children.
 			</p>
 
-			<h2>7. Your rights</h2>
+			<h2>8. Your rights</h2>
 			<p>
 				If you are located in the UK or EU, you may have rights under the GDPR/UK GDPR. Because all
 				data is short-lived and automatically deleted, we may not retain any data to process your
 				request.
 			</p>
 
-			<h2>8. Changes to this policy</h2>
+			<h2>9. Changes to this policy</h2>
 			<p>
 				We may update this policy periodically. If changes are made, the new policy will be posted
 				here with the revised date above.
 			</p>
 
-			<h2>9. Contact us</h2>
+			<h2>10. Contact us</h2>
 			<p>
 				Questions? Contact us at <a href="mailto:support@wannaverse.com">support@wannaverse.com</a>.
 			</p>

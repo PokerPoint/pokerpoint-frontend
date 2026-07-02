@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { ReactNode } from "react";
 import { site } from "@/lib/config";
+import Analytics from "./_components/shared/Analytics";
+import ConsentBanner from "./_components/shared/ConsentBanner";
 import Providers from "./providers";
 import "./globals.css";
 
@@ -57,6 +59,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 		>
 			<body>
 				<Providers>{children}</Providers>
+				<ConsentBanner />
+				<Analytics />
 			</body>
 		</html>
 	);
