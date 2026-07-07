@@ -16,7 +16,7 @@ export default function Hero() {
 			<div className={`gridTexture ${style.grid}`} aria-hidden="true" />
 			<div className={style.glow} aria-hidden="true" />
 
-			<div className="container">
+			<div className={`container ${style.heroInner}`}>
 				<Reveal className={style.copy}>
 					<span className="eyebrow">Planning poker &middot; Real-time &middot; Free</span>
 					<h1 className={style.title}>
@@ -35,6 +35,18 @@ export default function Hero() {
 						</Button>
 					</div>
 					<p className={style.fineprint}>No sign-up &middot; Unlimited rooms &middot; Free and open source</p>
+				</Reveal>
+				<Reveal className={style.media} delay={80}>
+					<div className={style.videoFrame}>
+						<iframe
+							src="https://www.youtube-nocookie.com/embed/hFGxrWubhfo"
+							title="PokerPoint demo video"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							referrerPolicy="strict-origin-when-cross-origin"
+							loading="lazy"
+							allowFullScreen
+						/>
+					</div>
 				</Reveal>
 			</div>
 

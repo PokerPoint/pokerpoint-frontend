@@ -34,9 +34,13 @@ export const site = {
 	url: "https://www.pokerpoint.co.uk",
 };
 
+export function canonicalRoomUrl(roomId: string): string {
+	return `${site.url}/app/?roomId=${encodeURIComponent(roomId)}`;
+}
+
 export function roomUrl(roomId: string): string {
 	if (typeof window === "undefined") {
-		return `${site.url}/app/?roomId=${encodeURIComponent(roomId)}`;
+		return canonicalRoomUrl(roomId);
 	}
 	return `${window.location.origin}/app/?roomId=${encodeURIComponent(roomId)}`;
 }

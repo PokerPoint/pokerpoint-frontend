@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check, Copy, Link2 } from "lucide-react";
-import { roomUrl } from "@/lib/config";
+import { canonicalRoomUrl, roomUrl } from "@/lib/config";
 import { useToast } from "../shared/Toast";
 import style from "./RoomShare.module.css";
 
@@ -13,7 +13,12 @@ interface Props {
 export default function RoomShare({ roomId }: Props) {
 	const { notify } = useToast();
 	const [copied, setCopied] = useState(false);
-	const url = roomUrl(roomId);
+	// Render the canonical URL first so server and client markup match,
+	// then swap to the local origin once mounted.
+	const [url, setUrl] = useState(() => canonicalRoomUrl(roomId));
+	useEffect(() => {
+		setUrl(roomUrl(roomId));
+	}, [roomId]);
 
 	async function copy() {
 		try {
