@@ -117,3 +117,16 @@
 		grid-template-columns: minmax(0, 1fr) 340px;
 	}
 }
+
+.reconnecting {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.6rem 1rem;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--accent-text);
+	background: var(--accent-soft);
+	border-bottom: 1px solid var(--accent-line);
+}

@@ -7,6 +7,12 @@ export const config = {
 		scope: "read:jira-work",
 	},
 	heartbeatIntervalMs: 60000,
+	reconnect: {
+		baseDelayMs: 1000,
+		maxDelayMs: 30000,
+		maxAttempts: 10,
+		joinTimeoutMs: 15000,
+	},
 	copyResetDelayMs: 2000,
 };
 

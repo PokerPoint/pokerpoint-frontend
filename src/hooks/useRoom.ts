@@ -9,6 +9,7 @@ export type RoomStatus = "idle" | "joining" | "joined" | "disconnected";
 
 export interface UseRoom {
 	status: RoomStatus;
+	reconnecting: boolean;
 	roomId: string | null;
 	roomName: string;
 	currentCard: string;
@@ -38,6 +39,7 @@ export function useRoom(): UseRoom {
 	}
 
 	const [status, setStatus] = useState<RoomStatus>("idle");
+	const [reconnecting, setReconnecting] = useState(false);
 	const [roomId, setRoomId] = useState<string | null>(null);
 	const [roomName, setRoomName] = useState("");
 	const [currentCard, setCurrentCard] = useState(NO_CARD);
@@ -60,7 +62,11 @@ export function useRoom(): UseRoom {
 		setCards(data.cards);
 		setParticipants(data.participants);
 		setVotedUserIds(new Set(data.votes));
-		setSelectedVote(null);
+		// After a rejoin the server still holds this user's vote, so keep showing it.
+		if (!data.votes.includes(storage.getUserUUID())) {
+			setSelectedVote(null);
+		}
+		setReconnecting(false);
 		setIsOwner(data.ownerUUID === storage.getUserUUID());
 		setStatus("joined");
 	}, []);
@@ -109,7 +115,11 @@ export function useRoom(): UseRoom {
 							break;
 					}
 				},
-				onClose: () => setStatus("disconnected"),
+				onReconnecting: () => setReconnecting(true),
+				onClose: () => {
+					setReconnecting(false);
+					setStatus("disconnected");
+				},
 			});
 		},
 		[applyState],
@@ -161,6 +171,7 @@ export function useRoom(): UseRoom {
 		serviceRef.current?.disconnect();
 		storage.setJiraLinked(null);
 		setStatus("idle");
+		setReconnecting(false);
 		setRoomId(null);
 		setRoomName("");
 		setCurrentCard(NO_CARD);
@@ -185,6 +196,7 @@ export function useRoom(): UseRoom {
 
 	return {
 		status,
+		reconnecting,
 		roomId,
 		roomName,
 		currentCard,

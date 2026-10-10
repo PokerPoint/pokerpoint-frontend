@@ -1,6 +1,6 @@
 "use client";
 
-import { Eye, RotateCcw } from "lucide-react";
+import { Eye, RotateCcw, WifiOff } from "lucide-react";
 import AppHeader from "./AppHeader";
 import VotingCards from "./VotingCards";
 import ParticipantList from "./ParticipantList";
@@ -25,6 +25,12 @@ export default function RoomSession({ room }: Props) {
 	return (
 		<>
 			<AppHeader roomName={room.roomName} onLeave={room.leave} />
+			{room.reconnecting && (
+				<div className={style.reconnecting} role="status">
+					<WifiOff size={16} />
+					Connection lost. Reconnecting…
+				</div>
+			)}
 			<main className={`container ${style.main}`}>
 				<div className={style.workspace}>
 					<section className={style.board}>
