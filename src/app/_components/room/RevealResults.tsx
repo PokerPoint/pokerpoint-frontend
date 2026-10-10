@@ -90,6 +90,8 @@ export default function RevealResults({ votes, displayNameFor }: Props) {
 								borderRadius: "10px",
 								color: "var(--ink)",
 							}}
+							labelStyle={{ color: "var(--ink)" }}
+							itemStyle={{ color: "var(--ink)" }}
 							formatter={(value: number) => [`${value} vote${value === 1 ? "" : "s"}`, "Votes"]}
 						/>
 						<Bar dataKey="count" radius={[5, 5, 5, 5]} barSize={24}>
